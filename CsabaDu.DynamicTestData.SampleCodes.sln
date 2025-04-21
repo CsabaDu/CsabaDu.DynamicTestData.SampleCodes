@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsabaDu.DynamicTestData.SampleCodes", "CsabaDu.DynamicTestData.SampleCodes.csproj", "{63C673B8-F383-4CB3-9BC2-B001AA4E8568}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsabaDu.DynamicTestData.SampleCodes.xUnit.v3", "CsabaDu.DynamicTestData.SampleCodes.xUnit.v3\CsabaDu.DynamicTestData.SampleCodes.xUnit.v3.csproj", "{B3342A9D-0437-40B4-BA24-609D20922627}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{63C673B8-F383-4CB3-9BC2-B001AA4E8568}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63C673B8-F383-4CB3-9BC2-B001AA4E8568}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63C673B8-F383-4CB3-9BC2-B001AA4E8568}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B3342A9D-0437-40B4-BA24-609D20922627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B3342A9D-0437-40B4-BA24-609D20922627}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B3342A9D-0437-40B4-BA24-609D20922627}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B3342A9D-0437-40B4-BA24-609D20922627}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
