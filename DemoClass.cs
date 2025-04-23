@@ -21,10 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.VisualBasic;
-using System;
-using System.Diagnostics.CodeAnalysis;
-
 namespace CsabaDu.DynamicTestData.SampleCodes;
 
 public class DemoClass
@@ -47,78 +43,42 @@ public class DemoClass
         #endregion
     }
 
-    public sealed record BirthDay : IComparer<BirthDay>
+}
+
+public sealed record BirthDay(string name, DateOnly dateOfBirth) : IComparer<BirthDay>
+{
+    private static readonly DateOnly Today = DateOnly.FromDateTime(DateTime.Now);
+    public const string ParameterValueCannotBeGreaterThanTheCurrentDateMessage
+        = "Parameter value cannot be greater than the current date.";
+
+    public string Name { get; init; } = Validated(name, nameof(name));
+
+    public DateOnly DateOfBirth { get; init; } = Validated(dateOfBirth, nameof(dateOfBirth));
+
+    public int Compare(BirthDay? thisBirthDay, BirthDay? otherBirthDay)
     {
-        private static readonly DateOnly Today = DateOnly.FromDateTime(DateTime.Now);
-        public const string ParameterValueCannotBeGreaterThanTheCurrentDateMessage
-            = "Parameter value cannot be greater than the current date.";
+        DateOnly leftDate = thisBirthDay?.DateOfBirth ?? DateOnly.MinValue;
+        DateOnly rightDate = otherBirthDay?.DateOfBirth ?? DateOnly.MinValue;
 
-        public BirthDay(string name, DateOnly dateOfBirth)
+        return leftDate.CompareTo(rightDate);
+    }
+
+    public bool IsOlderThan(BirthDay other)
+    => Compare(this, other) < 0;
+
+    private static DateOnly Validated(DateOnly dateOfBirth, string paramName)
+    {
+        if (dateOfBirth <= Today)
         {
-            Name = Validated(name, nameof(name));
-            DateOfBirth = Validated(dateOfBirth, nameof(dateOfBirth));
+            return dateOfBirth;
         }
 
-        public BirthDay(string name, DateTime dateOfBirth)
-        {
-            Name = Validated(name, nameof(name));
-            DateOfBirth = Validated(dateOfBirth, nameof(dateOfBirth));
-        }
+        throw new ArgumentOutOfRangeException(paramName, ParameterValueCannotBeGreaterThanTheCurrentDateMessage);
+    }
 
-        public string Name { get; init; }
-
-        public DateOnly DateOfBirth { get; init; }
-
-        public int Compare(BirthDay? thisBirthDay, BirthDay? otherBirthDay)
-        {
-            DateOnly leftDate = thisBirthDay?.DateOfBirth ?? DateOnly.MinValue;
-            DateOnly rightDate = otherBirthDay?.DateOfBirth ?? DateOnly.MinValue;
-
-            if (leftDate <= Today && rightDate <= Today)
-            {
-                return leftDate.CompareTo(rightDate);
-            }
-
-            throw new ArgumentOutOfRangeException(getParamName(), ParameterValueCannotBeGreaterThanTheCurrentDateMessage);
-
-            #region Local methods
-            string getParamName()
-            => leftDate > Today ? nameof(thisBirthDay) : nameof(otherBirthDay);
-            #endregion
-        }
-
-        public bool IsOlderThan(BirthDay other)
-        => Compare(this, other) < 0;
-
-        private static DateOnly Validated<TDate>(TDate dateOfBirth, string paramName)
-        where TDate : struct
-        {
-            if (dateOfBirth is DateOnly dateOnly)
-            {
-                return validated(dateOnly);
-            }
-
-            if (dateOfBirth is not DateTime dateTime)
-            {
-                throw new ArgumentException("Invalid date type.", paramName);
-            }
-
-            dateOnly = DateOnly.FromDateTime(dateTime);
-
-            return validated(dateOnly);
-
-            #region Local methods
-            DateOnly validated(DateOnly dateOnly)
-            => dateOnly <= Today ?
-                dateOnly
-                : throw new ArgumentOutOfRangeException(paramName, "Parameter value cannot be greater than the current date.");
-            #endregion
-        }
-
-        private static string Validated(string name, string paramName)
-        {
-            ArgumentException.ThrowIfNullOrWhiteSpace(name, paramName);
-            return name;
-        }
+    private static string Validated(string name, string paramName)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(name, paramName);
+        return name;
     }
 }

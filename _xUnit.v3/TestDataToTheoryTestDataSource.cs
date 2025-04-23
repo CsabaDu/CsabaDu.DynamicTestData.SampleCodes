@@ -32,7 +32,6 @@ public class TestDataToTheoryTestDataSource(ArgsCode argsCode) : DynamicTheoryTe
 
     public TheoryTestData? IsOlderReturnsToTheoryTestData()
     {
-
         bool expected = true;
         string definition = "thisDate is greater than otherDate";
         _thisDate = DateTimeNow;
@@ -59,7 +58,7 @@ public class TestDataToTheoryTestDataSource(ArgsCode argsCode) : DynamicTheoryTe
         #endregion
     }
 
-    public TheoryTestData? IsOlderThrowsToTheoryTestData(string? testMethodName = null, ArgsCode? argsCode = null)
+    public TheoryTestData? IsOlderThrowsToTheoryTestData(string testMethodName, ArgsCode? argsCode = null)
     {
         TheoryTestData.InitTestMethodName(testMethodName);
 
