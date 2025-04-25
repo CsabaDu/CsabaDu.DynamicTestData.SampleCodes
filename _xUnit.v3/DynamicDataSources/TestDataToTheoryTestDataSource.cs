@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.v3;
+namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.v3.DynamicDataSources;
 
 public class TestDataToTheoryTestDataSource(ArgsCode argsCode) : DynamicTheoryTestDataSource(argsCode)
 {
@@ -36,15 +36,34 @@ public class TestDataToTheoryTestDataSource(ArgsCode argsCode) : DynamicTheoryTe
         string definition = "thisDate is greater than otherDate";
         _thisDate = DateTimeNow;
         _otherDate = DateTimeNow.AddDays(-1);
-        addOptionalToTheoryTestData();
+        addTestDataToTheoryTestData();
 
         expected = false;
         definition = "thisDate equals otherDate";
         _otherDate = DateTimeNow;
-        addOptionalToTheoryTestData();
+        addTestDataToTheoryTestData();
 
         definition = "thisDate is less than otherDate";
         _thisDate = DateTimeNow.AddDays(-1);
+        addTestDataToTheoryTestData();
+
+        return TheoryTestData;
+
+        #region Local methods
+        void addTestDataToTheoryTestData()
+        => AddTestDataReturnsToTheoryTestData(definition, expected, _thisDate, _otherDate);
+        #endregion
+    }
+
+    public TheoryTestData? IsOlderThrowsToTheoryTestData(ArgsCode? argsCode = null)
+    {
+        string paramName = "otherDate";
+        _thisDate = DateTimeNow;
+        _otherDate = DateTimeNow.AddDays(1);
+        addOptionalToTheoryTestData();
+
+        paramName = "thisDate";
+        _thisDate = DateTimeNow.AddDays(1);
         addOptionalToTheoryTestData();
 
         return TheoryTestData;
@@ -53,27 +72,6 @@ public class TestDataToTheoryTestDataSource(ArgsCode argsCode) : DynamicTheoryTe
         void addOptionalToTheoryTestData()
         => AddOptionalToTheoryTestData(addTestDataToTheoryTestData, argsCode);
 
-        void addTestDataToTheoryTestData()
-        => AddTestDataReturnsToTheoryTestData(definition, expected, _thisDate, _otherDate);
-        #endregion
-    }
-
-    public TheoryTestData? IsOlderThrowsToTheoryTestData(string testMethodName, ArgsCode? argsCode = null)
-    {
-        TheoryTestData.InitTestMethodName(testMethodName);
-
-        string paramName = "otherDate";
-        _thisDate = DateTimeNow;
-        _otherDate = DateTimeNow.AddDays(1);
-        addTestDataToTheoryTestData();
-
-        paramName = "thisDate";
-        _thisDate = DateTimeNow.AddDays(1);
-        addTestDataToTheoryTestData();
-
-        return TheoryTestData;
-
-        #region Local methods
         void addTestDataToTheoryTestData()
         => AddTestDataThrowsToTheoryTestData(getDefinition(), getExpected(), _thisDate, _otherDate);
 
