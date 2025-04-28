@@ -42,43 +42,32 @@ public class DemoClass
         => thisDate > DateTime.Now ? nameof(thisDate) : nameof(otherDate);
         #endregion
     }
-
 }
 
-public sealed record BirthDay(string name, DateOnly dateOfBirth) : IComparer<BirthDay>
-{
-    private static readonly DateOnly Today = DateOnly.FromDateTime(DateTime.Now);
-    public const string ParameterValueCannotBeGreaterThanTheCurrentDateMessage
-        = "Parameter value cannot be greater than the current date.";
+//public sealed class BirthDay(string name, DateOnly dateOfBirth) : IComparable<BirthDay>
+//{
+//    private static readonly DateOnly Today = DateOnly.FromDateTime(DateTime.Now);
+//    public const string ParameterValueCannotBeGreaterThanTheCurrentDateMessage
+//        = "Parameter value cannot be greater than the current date.";
 
-    public string Name { get; init; } = Validated(name, nameof(name));
+//    public string Name { get; init; } = Validated(name, nameof(name));
 
-    public DateOnly DateOfBirth { get; init; } = Validated(dateOfBirth, nameof(dateOfBirth));
+//    public DateOnly DateOfBirth { get; init; } = Validated(dateOfBirth, nameof(dateOfBirth));
 
-    public int Compare(BirthDay? thisBirthDay, BirthDay? otherBirthDay)
-    {
-        DateOnly leftDate = thisBirthDay?.DateOfBirth ?? DateOnly.MinValue;
-        DateOnly rightDate = otherBirthDay?.DateOfBirth ?? DateOnly.MinValue;
+//    public int CompareTo(BirthDay? other)
+//    => DateOfBirth.CompareTo(other?.DateOfBirth ?? DateOnly.MinValue);
 
-        return leftDate.CompareTo(rightDate);
-    }
+//    public bool IsOlderThan(BirthDay other)
+//    => CompareTo(other) < 0;
 
-    public bool IsOlderThan(BirthDay other)
-    => Compare(this, other) < 0;
+//    private static DateOnly Validated(DateOnly dateOfBirth, string paramName)
+//    => dateOfBirth <= Today ?
+//        dateOfBirth
+//        : throw new ArgumentOutOfRangeException(paramName, ParameterValueCannotBeGreaterThanTheCurrentDateMessage);
 
-    private static DateOnly Validated(DateOnly dateOfBirth, string paramName)
-    {
-        if (dateOfBirth <= Today)
-        {
-            return dateOfBirth;
-        }
-
-        throw new ArgumentOutOfRangeException(paramName, ParameterValueCannotBeGreaterThanTheCurrentDateMessage);
-    }
-
-    private static string Validated(string name, string paramName)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(name, paramName);
-        return name;
-    }
-}
+//    private static string Validated(string name, string paramName)
+//    {
+//        ArgumentException.ThrowIfNullOrWhiteSpace(name, paramName);
+//        return name;
+//    }
+//}

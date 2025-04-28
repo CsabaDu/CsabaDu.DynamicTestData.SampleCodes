@@ -8,21 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-	  <PackageReference Include="coverlet.collector" Version="6.0.4">
-	    <PrivateAssets>all</PrivateAssets>
-	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	  </PackageReference>
-	  <PackageReference Include="xunit.v3" Version="2.0.1" />
-	  <PackageReference Include="xunit.v3.extensibility.core" Version="2.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
 	  <ProjectReference Include="..\..\CsabaDu.DynamicTestData.xUnit.v3\CsabaDu.DynamicTestData.xUnit.v3.csproj" />
 	  <ProjectReference Include="..\CsabaDu.DynamicTestData.SampleCodes.csproj" />
   </ItemGroup>
 
 	<ItemGroup>
 		<Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="xunit.v3" Version="2.0.1" />
 	</ItemGroup>
 
 </Project>

@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
 namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.v3.DemoClassTests;
 
 public sealed class DemoClassTestsInstanceWithTheoryData : IDisposable
@@ -38,7 +37,7 @@ public sealed class DemoClassTestsInstanceWithTheoryData : IDisposable
     public void Dispose()
     => DataSource.ResetTheoryTestData();
 
-    [Theory, MemberData(nameof(IsOlderReturnsTheoryTestData))]
+    [Theory, NamedMemberData(nameof(IsOlderReturnsTheoryTestData))]
     public void IsOlder_validArgs_returnsExpected(TestDataReturns<bool, DateTime, DateTime> testData)
     {
         // Arrange & Act
@@ -48,7 +47,7 @@ public sealed class DemoClassTestsInstanceWithTheoryData : IDisposable
         Assert.Equal(testData.Expected, actual);
     }
 
-    [Theory, MemberData(nameof(IsOlderThrowsTheoryTestData))]
+    [Theory, NamedMemberData(nameof(IsOlderThrowsTheoryTestData))]
     public void IsOlder_invalidArgs_throwsException(TestDataThrows<ArgumentOutOfRangeException, DateTime, DateTime> testData)
     {
         // Arrange & Act
