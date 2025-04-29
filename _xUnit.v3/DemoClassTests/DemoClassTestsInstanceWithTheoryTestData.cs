@@ -23,7 +23,7 @@
  */
 namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.v3.DemoClassTests;
 
-public sealed class DemoClassTestsInstanceWithTheoryData : IDisposable
+public sealed class DemoClassTestsInstanceWithTheoryTestData : IDisposable
 {
     private readonly DemoClass _sut = new();
     private static readonly TestDataToTheoryTestDataSource DataSource = new(ArgsCode.Instance);
