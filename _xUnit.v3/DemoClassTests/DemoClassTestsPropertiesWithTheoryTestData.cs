@@ -59,3 +59,4 @@ public sealed class DemoClassTestsPropertiesWithTheoryTestData : IDisposable
         Assert.Equal(expected.Message, actual.Message);
     }
 }
+
