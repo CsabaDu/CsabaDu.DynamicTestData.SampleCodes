@@ -37,7 +37,7 @@ public sealed class DemoClassTestsInstanceWithTheoryTestData : IDisposable
     public void Dispose()
     => DataSource.ResetTheoryTestData();
 
-    [Theory, NamedMemberTestData(nameof(IsOlderReturnsTheoryTestData))]
+    [Theory, MemberTestData(nameof(IsOlderReturnsTheoryTestData))]
     public void IsOlder_validArgs_returnsExpected(TestDataReturns<bool, DateTime, DateTime> testData)
     {
         // Arrange & Act
@@ -47,7 +47,7 @@ public sealed class DemoClassTestsInstanceWithTheoryTestData : IDisposable
         Assert.Equal(testData.Expected, actual);
     }
 
-    [Theory, NamedMemberTestData(nameof(IsOlderThrowsTheoryTestData))]
+    [Theory, MemberTestData(nameof(IsOlderThrowsTheoryTestData))]
     public void IsOlder_invalidArgs_throwsException(TestDataThrows<ArgumentOutOfRangeException, DateTime, DateTime> testData)
     {
         // Arrange & Act
