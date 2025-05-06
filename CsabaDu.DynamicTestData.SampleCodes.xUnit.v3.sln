@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsabaDu.DynamicTestData.SampleCodes.xUnit.v3", "_xUnit.v3\CsabaDu.DynamicTestData.SampleCodes.xUnit.v3.csproj", "{B343C1AD-8B2F-7ACF-EDD8-66C34E42B21A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsabaDu.DynamicTestData.xUnit.v3", "..\CsabaDu.DynamicTestData.xUnit.v3\CsabaDu.DynamicTestData.xUnit.v3.csproj", "{5FFACE65-057B-9F8C-9D15-0E018684D407}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsabaDu.DynamicTestData.SampleCodes", "CsabaDu.DynamicTestData.SampleCodes.csproj", "{7D186538-81B2-7F70-4459-F449299DE616}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsabaDu.DynamicTestData.xUnit.v3", "..\CsabaDu.DynamicTestData.xUnit.v3.Tests\CsabaDu.DynamicTestData.xUnit.v3.csproj", "{D856B4BC-2E88-E53D-622F-77413A52E2A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{B343C1AD-8B2F-7ACF-EDD8-66C34E42B21A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B343C1AD-8B2F-7ACF-EDD8-66C34E42B21A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B343C1AD-8B2F-7ACF-EDD8-66C34E42B21A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5FFACE65-057B-9F8C-9D15-0E018684D407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5FFACE65-057B-9F8C-9D15-0E018684D407}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5FFACE65-057B-9F8C-9D15-0E018684D407}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5FFACE65-057B-9F8C-9D15-0E018684D407}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D186538-81B2-7F70-4459-F449299DE616}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D186538-81B2-7F70-4459-F449299DE616}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D186538-81B2-7F70-4459-F449299DE616}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D186538-81B2-7F70-4459-F449299DE616}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D856B4BC-2E88-E53D-622F-77413A52E2A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D856B4BC-2E88-E53D-622F-77413A52E2A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D856B4BC-2E88-E53D-622F-77413A52E2A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D856B4BC-2E88-E53D-622F-77413A52E2A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
