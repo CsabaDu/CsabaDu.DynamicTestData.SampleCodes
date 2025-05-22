@@ -42,4 +42,8 @@
     <PackageReference Update="MSTest.TestAdapter" Version="3.9.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>
