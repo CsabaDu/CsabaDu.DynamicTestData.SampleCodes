@@ -16,25 +16,25 @@ public class TestDataToTheoryTestDataSource(ArgsCode argsCode) : DynamicTheoryTe
         string definition = "thisDate is greater than otherDate";
         _thisDate = DateTimeNow;
         _otherDate = DateTimeNow.AddDays(-1);
-        addOptionalToTheoryTestData();
+        addOptional();
 
         expected = false;
         definition = "thisDate equals otherDate";
         _otherDate = DateTimeNow;
-        addOptionalToTheoryTestData();
+        addOptional();
 
         definition = "thisDate is less than otherDate";
         _thisDate = DateTimeNow.AddDays(-1);
-        addOptionalToTheoryTestData();
+        addOptional();
 
         return TheoryTestData;
 
         #region Local methods
-        void addOptionalToTheoryTestData()
-        => AddOptionalToTheoryTestData(addTestDataToTheoryTestData, argsCode);
+        void addOptional()
+        => AddOptional(add, argsCode);
 
-        void addTestDataToTheoryTestData()
-        => AddTestDataReturnsToTheoryTestData(definition, expected, _thisDate, _otherDate);
+        void add()
+        => AddReturns(definition, expected, _thisDate, _otherDate);
         #endregion
     }
 
@@ -43,20 +43,20 @@ public class TestDataToTheoryTestDataSource(ArgsCode argsCode) : DynamicTheoryTe
         string paramName = "otherDate";
         _thisDate = DateTimeNow;
         _otherDate = DateTimeNow.AddDays(1);
-        addTestDataToTheoryTestData();
+        add();
 
         paramName = "thisDate";
         _thisDate = DateTimeNow.AddDays(1);
-        addTestDataToTheoryTestData();
+        add();
 
         return TheoryTestData;
 
         #region Local methods
-        //void addOptionalToTheoryTestData()
-        //=> AddOptionalToTheoryTestData(addTestDataToTheoryTestData, argsCode);
+        //void addOptional()
+        //=> AddOptional(add, argsCode);
 
-        void addTestDataToTheoryTestData()
-        => AddTestDataThrowsToTheoryTestData(getDefinition(), getExpected(), _thisDate, _otherDate);
+        void add()
+        => AddThrows(getDefinition(), getExpected(), _thisDate, _otherDate);
 
         string getDefinition()
         => $"{paramName} is greater than the current date";
