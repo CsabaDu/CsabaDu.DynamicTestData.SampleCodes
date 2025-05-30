@@ -38,7 +38,7 @@ public class TestDataToTheoryTestDataSource(ArgsCode argsCode) : DynamicTheoryTe
         #endregion
     }
 
-    public TheoryTestData? IsOlderThrowsToTheoryTestData(/*ArgsCode? argsCode = null*/)
+    public TheoryTestData? IsOlderThrowsToTheoryTestData()
     {
         string paramName = "otherDate";
         _thisDate = DateTimeNow;
@@ -52,8 +52,6 @@ public class TestDataToTheoryTestDataSource(ArgsCode argsCode) : DynamicTheoryTe
         return TheoryTestData;
 
         #region Local methods
-        //void addOptional()
-        //=> AddOptional(add, argsCode);
 
         void add()
         => AddThrows(getDefinition(), getExpected(), _thisDate, _otherDate);
