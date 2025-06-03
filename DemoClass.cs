@@ -24,30 +24,32 @@ public class DemoClass
     }
 }
 
-//public sealed class BirthDay(string name, DateOnly dateOfBirth) : IComparable<BirthDay>
-//{
-//    private static readonly DateOnly Today = DateOnly.FromDateTime(DateTime.Now);
-//    public const string ParameterValueCannotBeGreaterThanTheCurrentDateMessage
-//        = "Parameter value cannot be greater than the current date.";
+public sealed class BirthDay : IComparable<BirthDay>
+{
+    private static readonly DateOnly Today =
+        DateOnly.FromDateTime(DateTime.Now);
 
-//    public string Name { get; init; } = Validated(name, nameof(name));
+    public BirthDay(string name, DateOnly dateOfBirth)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(name, nameof(name));
+        Name = name;
 
-//    public DateOnly DateOfBirth { get; init; } = Validated(dateOfBirth, nameof(dateOfBirth));
+        if (dateOfBirth > Today)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(dateOfBirth),
+                GreaterThanTheCurrentDateMessage);
+        }
+        DateOfBirth = dateOfBirth;
+    }
 
-//    public int CompareTo(BirthDay? other)
-//    => DateOfBirth.CompareTo(other?.DateOfBirth ?? DateOnly.MinValue);
+    public const string GreaterThanTheCurrentDateMessage
+        = "Date of birth cannot be greater than the current date.";
 
-//    public bool IsOlderThan(BirthDay other)
-//    => CompareTo(other) < 0;
+    public string Name { get; init; }
 
-//    private static DateOnly Validated(DateOnly dateOfBirth, string paramName)
-//    => dateOfBirth <= Today ?
-//        dateOfBirth
-//        : throw new ArgumentOutOfRangeException(paramName, ParameterValueCannotBeGreaterThanTheCurrentDateMessage);
+    public DateOnly DateOfBirth { get; init; }
 
-//    private static string Validated(string name, string paramName)
-//    {
-//        ArgumentException.ThrowIfNullOrWhiteSpace(name, paramName);
-//        return name;
-//    }
-//}
+    public int CompareTo(BirthDay? other)
+    => DateOfBirth.CompareTo(other?.DateOfBirth ?? Today);
+}
