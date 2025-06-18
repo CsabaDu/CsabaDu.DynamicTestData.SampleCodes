@@ -24,32 +24,3 @@ public class DemoClass
     }
 }
 
-public sealed class BirthDay : IComparable<BirthDay>
-{
-    private static readonly DateOnly Today =
-        DateOnly.FromDateTime(DateTime.Now);
-
-    public BirthDay(string name, DateOnly dateOfBirth)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(name, nameof(name));
-        Name = name;
-
-        if (dateOfBirth > Today)
-        {
-            throw new ArgumentOutOfRangeException(
-                nameof(dateOfBirth),
-                GreaterThanTheCurrentDateMessage);
-        }
-        DateOfBirth = dateOfBirth;
-    }
-
-    public const string GreaterThanTheCurrentDateMessage
-        = "Date of birth cannot be greater than the current date.";
-
-    public string Name { get; init; }
-
-    public DateOnly DateOfBirth { get; init; }
-
-    public int CompareTo(BirthDay? other)
-    => DateOfBirth.CompareTo(other?.DateOfBirth ?? Today);
-}
