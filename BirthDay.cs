@@ -47,4 +47,3 @@ public class BirthDay : IComparable<BirthDay>
     public int CompareTo(BirthDay? other)
     => DateOfBirth.CompareTo(other?.DateOfBirth ?? Today);
 }
-
