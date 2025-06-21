@@ -1,9 +1,7 @@
 ﻿// SPDX-License-Identifier: MIT
 // Copyright (c) 2025. Csaba Dudas (CsabaDu)
 
-using CsabaDu.DynamicTestData.xUnit.v3.TestDataHolders;
 using CsabaDu.DynamicTestData.xUnit.v3.TestDataHolders.Interfaces;
-using CsabaDu.DynamicTestData.xUnit.v3.TheoryTestDataHolders;
 
 namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.v3.DynamicDataSources;
 
@@ -48,7 +46,7 @@ public class BirthDayTheoryTestDataHolder(ArgsCode argsCode)
         name = ValidName;
         add();
 
-        return GetRows(argsCode);
+        return GetNamedRows(testMethodName, argsCode);
 
         #region Local Methods
         void add()
@@ -74,7 +72,7 @@ public class BirthDayTheoryTestDataHolder(ArgsCode argsCode)
         dateOfBirth = Today.AddDays(-1);
         add();
 
-        return GetRows(argsCode);
+        return GetNamedRows(testMethodName, argsCode);
 
         #region Local Methods
         void add()
@@ -112,7 +110,7 @@ public class BirthDayTheoryTestDataHolder(ArgsCode argsCode)
         other = new(ValidName, dateOfBirth.AddDays(-1));
         add();
 
-        return GetRows(argsCode);
+        return GetNamedRows(testMethodName, argsCode);
 
         #region Local Methods
         void add()
