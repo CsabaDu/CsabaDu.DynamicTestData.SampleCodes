@@ -5,24 +5,28 @@ namespace CsabaDu.DynamicTestData.SampleCodes;
 
 public class BirthDay : IComparable<BirthDay>
 {
+    #region Constants and Fields
     private static readonly DateOnly Today =
         DateOnly.FromDateTime(DateTime.Now);
+    public const string GreaterThanTheCurrentDateMessage =
+        "Date of birth cannot be greater than the current date.";
+    #endregion
 
+    #region Properties
     public string Name { get; init; }
-
     public DateOnly DateOfBirth { get; init; }
+    #endregion
 
-    public const string GreaterThanTheCurrentDateMessage
-        = "Date of birth cannot be " +
-        "greater than the current date.";
-
+    #region Constructors
+    // TEST CASES:
+    // -THROWS-
     // name is null => throws ArguemntNullException
     // name is empty => throws ArgumentException
     // name is white space => throws ArgumentException
     // dateOfBirth is less than the current day => throws ArgumentOutOfRangeException
-
-    // dateOfBirth is equal with the current day => creates BirthDay instance
-    // dateOfBirth is greater than the current day => creates BirthDay instance
+    // -CREATES-
+    // Valid name and dateOfBirth is equal with the current day => creates BirthDay instance
+    // Valid name and dateOfBirth is greater than the current day => creates BirthDay instance
     public BirthDay(string name, DateOnly dateOfBirth)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(
@@ -39,11 +43,16 @@ public class BirthDay : IComparable<BirthDay>
         Name = name;
         DateOfBirth = dateOfBirth;
     }
+    #endregion
 
+    #region Methods
+    // TEST CASES:
+    // -RETURNS-
     // other is null => returns -1
     // this.DateOfBirth is less than other.DateOfBirth => returns -1
-    // this.DateOfBirth is equal with other.DateOfBirth => return 0
+    // this.DateOfBirth is equal with other.DateOfBirth => returns 0
     // this.DateOfBirth is greater than other.DateOfBirth => returns 1
     public int CompareTo(BirthDay? other)
     => DateOfBirth.CompareTo(other?.DateOfBirth ?? Today);
+    #endregion
 }

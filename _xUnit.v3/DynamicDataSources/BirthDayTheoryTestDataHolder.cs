@@ -1,8 +1,6 @@
 ﻿// SPDX-License-Identifier: MIT
 // Copyright (c) 2025. Csaba Dudas (CsabaDu)
 
-using CsabaDu.DynamicTestData.xUnit.v3.TestDataHolders.Interfaces;
-
 namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.v3.DynamicDataSources;
 
 public class BirthDayTheoryTestDataHolder(ArgsCode argsCode)
@@ -46,7 +44,7 @@ public class BirthDayTheoryTestDataHolder(ArgsCode argsCode)
         name = ValidName;
         add();
 
-        return GetNamedRows(testMethodName, argsCode);
+        return GetRows(testMethodName, argsCode);
 
         #region Local Methods
         void add()
@@ -62,17 +60,17 @@ public class BirthDayTheoryTestDataHolder(ArgsCode argsCode)
         string expected = "creates BirthDay instance";
         string paramName = "dateOfBirth";
 
-        // dateOfBirth is equal with the current day => creates BirthDay instance
-        string description = $"{paramName} is equal with the current day";
+        // Valid name and dateOfBirth is equal with the current day => creates BirthDay instance
+        string description = $"Valid name and {paramName} is equal with the current day";
         DateOnly dateOfBirth = Today;
         add();
 
-        // dateOfBirth is less than the current day => creates BirthDay instance
-        description = $"{paramName} is less than the current day";
+        // Valid name and dateOfBirth is less than the current day => creates BirthDay instance
+        description = $"Valid name and {paramName} is less than the current day";
         dateOfBirth = Today.AddDays(-1);
         add();
 
-        return GetNamedRows(testMethodName, argsCode);
+        return GetRows(testMethodName, argsCode);
 
         #region Local Methods
         void add()
@@ -110,7 +108,7 @@ public class BirthDayTheoryTestDataHolder(ArgsCode argsCode)
         other = new(ValidName, dateOfBirth.AddDays(-1));
         add();
 
-        return GetNamedRows(testMethodName, argsCode);
+        return GetRows(testMethodName, argsCode);
 
         #region Local Methods
         void add()

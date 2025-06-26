@@ -7,9 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="_MSTest\**" />
     <Compile Remove="_xUnit.v3\**" />
+    <EmbeddedResource Remove="_MSTest\**" />
     <EmbeddedResource Remove="_xUnit.v3\**" />
+    <None Remove="_MSTest\**" />
     <None Remove="_xUnit.v3\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CsabaDu.DynamicTestData\CsabaDu.DynamicTestData.csproj" />
   </ItemGroup>
 
 </Project>

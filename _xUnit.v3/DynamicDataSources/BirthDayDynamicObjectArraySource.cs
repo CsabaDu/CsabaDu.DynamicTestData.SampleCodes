@@ -3,14 +3,15 @@
 
 namespace CsabaDu.DynamicTestData.SampleCodes.DynamicDataSources;
 
-public class BirthdayDynamicDataSource(ArgsCode argsCode)
-: DynamicDataSource(argsCode, null)
+public class BirthDayDynamicObjectArraySource(ArgsCode argsCode)
+: DynamicObjectArraySource(argsCode, null)
 {
     private static readonly DateOnly Today =
         DateOnly.FromDateTime(DateTime.Now);
     private const string ValidName = "valid name";
 
-    public IEnumerable<object?[]>? GetBirthDayConstructorInvalidArgs(ArgsCode? argsCode = null)
+    public IEnumerable<object?[]>? GetBirthDayConstructorInvalidArgs(
+        ArgsCode? argsCode = null)
     {
         string paramName = "name";
 
@@ -58,13 +59,13 @@ public class BirthdayDynamicDataSource(ArgsCode argsCode)
         string expected = "creates BirthDay instance";
         string paramName = "dateOfBirth";
 
-        // dateOfBirth is equal with the current day => creates BirthDay instance
-        string description = $"{paramName} is equal with the current day";
+        // Valid name and dateOfBirth is equal with the current day => creates BirthDay instance
+        string description = $"Valid name and {paramName} is equal with the current day";
         DateOnly dateOfBirth = Today;
         add();
 
-        // dateOfBirth is less than the current day => creates BirthDay instance
-        description = $"{paramName} is less than the current day";
+        // Valid name and dateOfBirth is less than the current day => creates BirthDay instance
+        description = $"Valid name and {paramName} is less than the current day";
         dateOfBirth = Today.AddDays(-1);
         add();
 
