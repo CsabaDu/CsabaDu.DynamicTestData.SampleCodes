@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CsabaDu.DynamicTestData.xUnit.v3.Tests\CsabaDu.DynamicTestData.xUnit.v3.csproj" />
+    <ProjectReference Include="..\..\CsabaDu.DynamicTestData.xUnit.v3\CsabaDu.DynamicTestData.xUnit.v3.csproj" />
     <ProjectReference Include="..\CsabaDu.DynamicTestData.SampleCodes.csproj" />
   </ItemGroup>
 

@@ -3,8 +3,8 @@
 
 namespace CsabaDu.DynamicTestData.SampleCodes.DynamicDataSources;
 
-public class BirthDayDynamicObjectArraySource(ArgsCode argsCode)
-: DynamicObjectArraySource(argsCode, null)
+public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, Type? expectedResultType)
+: DynamicObjectArraySource(argsCode, expectedResultType)
 {
     #region Static Fields
     private static readonly DateOnly Today =
@@ -12,11 +12,11 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode)
     #endregion
 
     #region Methods
-    // 'TestData<>' type usage.
+    // 'TestData<DateOnly>' type usage.
+    // Valid 'string name' parameter should be declared and initialized
+    // within the test method.
     public IEnumerable<object?[]>? GetBirthDayConstructorValidArgs(ArgsCode? argsCode = null)
     {
-        // Valid 'string name' parameter should be declared and initialized
-        // within the test method.
         string expected = "creates BirthDay instance";
         string paramName = "dateOfBirth";
 
@@ -41,13 +41,13 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode)
         #endregion
     }
 
-    // 'TestDataReturns<>' type usage.
+    // 'TestDataReturns<int, DateOnly, BirthDay>' type usage.
+    // Valid 'string name' parameter should be declared and initialized
+    // within the test method.
     public IEnumerable<object?[]>? GetCompareToArgs(ArgsCode? argsCode = null)
     {
-        // Valid 'string name' parameter should be declared and initialized
-        // within the test method.
-        DateOnly dateOfBirth = Today.AddDays(-1);
         string name = "valid name";
+        DateOnly dateOfBirth = Today.AddDays(-1);
 
         // other is null => returns 1
         string description = "other is null";
@@ -84,12 +84,12 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode)
         #endregion
     }
 
-    // 'TestDataThrows<>' type usage.
+    // 'TestDataThrows<ArgumentException, string>' type usage.
+    // Invalid 'DateOnly dateOfBirth' parameter should be declared and initialized
+    // within the test method.
     public IEnumerable<object?[]>? GetBirthDayConstructorInvalidArgs(
         ArgsCode? argsCode = null)
     {
-        // Invalid 'DateOnly dateOfBirth' parameter should be declared and initialized
-        // within the test method.
         string paramName = "name";
 
         // name is null => throws ArguemntNullException

@@ -17,7 +17,7 @@ public class BirthDay : IComparable<BirthDay>
     public DateOnly DateOfBirth { get; init; }
     #endregion
 
-    #region Constructors
+    #region Constructor
     // TEST CASES:
     // -THROWS-
     // name is null => throws ArguemntNullException
