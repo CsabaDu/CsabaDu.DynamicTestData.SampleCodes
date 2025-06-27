@@ -9,7 +9,8 @@ public class BirthDay : IComparable<BirthDay>
     private static readonly DateOnly Today =
         DateOnly.FromDateTime(DateTime.Now);
     public const string GreaterThanTheCurrentDateMessage =
-        "Date of birth cannot be greater than the current date.";
+        "Date of birth cannot be " +
+        "greater than the current date.";
     #endregion
 
     #region Properties
@@ -53,6 +54,7 @@ public class BirthDay : IComparable<BirthDay>
     // this.DateOfBirth is equal with other.DateOfBirth => returns 0
     // this.DateOfBirth is greater than other.DateOfBirth => returns 1
     public int CompareTo(BirthDay? other)
-    => DateOfBirth.CompareTo(other?.DateOfBirth ?? Today);
+    => DateOfBirth.CompareTo(
+        other?.DateOfBirth ?? DateOnly.MaxValue);
     #endregion
 }
