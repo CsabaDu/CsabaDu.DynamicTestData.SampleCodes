@@ -7,15 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="CsabaDu.DynamicTestData.SampleCodes.xUnit\**" />
     <Compile Remove="_MSTest\**" />
     <Compile Remove="_NUnit\**" />
     <Compile Remove="_xUnit.v3\**" />
+    <Compile Remove="_xUnit\**" />
+    <EmbeddedResource Remove="CsabaDu.DynamicTestData.SampleCodes.xUnit\**" />
     <EmbeddedResource Remove="_MSTest\**" />
     <EmbeddedResource Remove="_NUnit\**" />
     <EmbeddedResource Remove="_xUnit.v3\**" />
+    <EmbeddedResource Remove="_xUnit\**" />
+    <None Remove="CsabaDu.DynamicTestData.SampleCodes.xUnit\**" />
     <None Remove="_MSTest\**" />
     <None Remove="_NUnit\**" />
     <None Remove="_xUnit.v3\**" />
+    <None Remove="_xUnit\**" />
   </ItemGroup>
 
   <ItemGroup>
