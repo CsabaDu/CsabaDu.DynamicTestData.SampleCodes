@@ -1,7 +1,7 @@
 ﻿// SPDX-License-Identifier: MIT
 // Copyright (c) 2025. Csaba Dudas (CsabaDu)
 
-namespace CsabaDu.DynamicTestData.SampleCodes;
+namespace CsabaDu.DynamicTestData.SampleCodes.Samples;
 
 public class BirthDay : IComparable<BirthDay>
 {
