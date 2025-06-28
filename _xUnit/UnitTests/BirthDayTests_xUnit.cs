@@ -1,13 +1,13 @@
 ﻿// SPDX-License-Identifier: MIT
 // Copyright (c) 2025. Csaba Dudas (CsabaDu)
 
-namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.v3.UnitTests;
+namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.UnitTets;
 
-public class BirthDayTests_xUnit_v3 : IDisposable
+public class BirthDayTests_xUnit : IDisposable
 {
     #region Test preparation
-    private static BirthDayDynamicObjectArraySource DataSource
-    => new(ArgsCode.Instance, typeof(IExpected));
+    private static BirthDayDynamicExpectedObjectArraySource DataSource
+    => new(ArgsCode.Instance);
 
     public void Dispose()
     {

@@ -1,7 +1,7 @@
 ﻿// SPDX-License-Identifier: MIT
 // Copyright (c) 2025. Csaba Dudas (CsabaDu)
 
-using CsabaDu.DynamicTestData.SampleCodes.Samples;
+using CsabaDu.DynamicTestData.SampleCodes.Testables;
 
 namespace CsabaDu.DynamicTestData.SampleCodes.DynamicDataSources;
 

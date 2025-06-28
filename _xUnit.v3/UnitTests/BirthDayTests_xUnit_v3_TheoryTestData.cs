@@ -1,7 +1,7 @@
 ﻿// SPDX-License-Identifier: MIT
 // Copyright (c) 2025. Csaba Dudas (CsabaDu)
 
-namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.v3.DemoClassTests;
+namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.v3.UnitTests;
 
 public class BirthDayTests_xUnit_v3_TheoryTestData : IDisposable
 {

@@ -1,9 +1,6 @@
 ﻿// SPDX-License-Identifier: MIT
 // Copyright (c) 2025. Csaba Dudas (CsabaDu)
 
-using CsabaDu.DynamicTestData.xUnit.v3.TestDataHolders;
-using CsabaDu.DynamicTestData.xUnit.v3.TestDataRows;
-
 namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.v3.DynamicDataSources;
 
 public class BirthDayTheoryTestDataHolder(ArgsCode argsCode)
