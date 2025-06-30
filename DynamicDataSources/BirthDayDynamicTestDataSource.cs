@@ -3,8 +3,8 @@
 
 namespace CsabaDu.DynamicTestData.SampleCodes.DynamicDataSources;
 
-public class BirthDayDynamicTestDataRowSource(ArgsCode argsCode, Type? expectedType)
-: DynamicObjectArraySource(argsCode, expectedType)
+public class BirthDayDynamicTestDataSource()
+: DynamicExpectedDataSource(ArgsCode.Instance)
 {
     #region Static Fields
     private static readonly DateOnly Today =
@@ -15,7 +15,7 @@ public class BirthDayDynamicTestDataRowSource(ArgsCode argsCode, Type? expectedT
     // 'TestData<DateOnly>' type usage.
     // Valid 'string name' parameter should be declared and initialized
     // within the test method.
-    public IEnumerable<ITestDataRow>? GetBirthDayConstructorValidArgs(ArgsCode? argsCode = null)
+    public IEnumerable<TestData<DateOnly>>? GetBirthDayConstructorValidArgs()
     {
         string expected = "creates BirthDay instance";
         string paramName = "dateOfBirth";
@@ -30,7 +30,8 @@ public class BirthDayDynamicTestDataRowSource(ArgsCode argsCode, Type? expectedT
         dateOfBirth = Today.AddDays(-1);
         add();
 
-        return GetTestDataRows(argsCode);
+        return GetRows(null)?.Select(
+            x => x[0] as TestData<DateOnly>)!;
 
         #region Local Methods
         void add()
@@ -44,7 +45,7 @@ public class BirthDayDynamicTestDataRowSource(ArgsCode argsCode, Type? expectedT
     // 'TestDataReturns<int, DateOnly, BirthDay>' type usage.
     // Valid 'string name' parameter should be declared and initialized
     // within the test method.
-    public IEnumerable<ITestDataRow>? GetCompareToArgs(ArgsCode? argsCode = null)
+    public IEnumerable<TestDataReturns<int, DateOnly, BirthDay>>? GetCompareToArgs()
     {
         string name = "valid name";
         DateOnly dateOfBirth = Today.AddDays(-1);
@@ -72,7 +73,8 @@ public class BirthDayDynamicTestDataRowSource(ArgsCode argsCode, Type? expectedT
         other = new(name, dateOfBirth.AddDays(-1));
         add();
 
-        return GetTestDataRows(argsCode);
+        return GetRows(null)?.Select(
+            x => x[0] as TestDataReturns<int, DateOnly, BirthDay>)!;
 
         #region Local Methods
         void add()
@@ -87,8 +89,7 @@ public class BirthDayDynamicTestDataRowSource(ArgsCode argsCode, Type? expectedT
     // 'TestDataThrows<ArgumentException, string>' type usage.
     // Invalid 'DateOnly dateOfBirth' parameter should be declared and initialized
     // within the test method.
-    public IEnumerable<ITestDataRow>? GetBirthDayConstructorInvalidArgs(
-        ArgsCode? argsCode = null)
+    public IEnumerable<TestDataThrows<ArgumentException, string>>? GetBirthDayConstructorInvalidArgs()
     {
         string paramName = "name";
 
@@ -120,7 +121,8 @@ public class BirthDayDynamicTestDataRowSource(ArgsCode argsCode, Type? expectedT
         expected = new ArgumentOutOfRangeException(paramName, message);
         add();
 
-        return GetTestDataRows(argsCode);
+        return GetRows(null)?.Select(
+            x => x[0] as TestDataThrows<ArgumentException, string>)!;
 
         #region Local Methods
         void add()
