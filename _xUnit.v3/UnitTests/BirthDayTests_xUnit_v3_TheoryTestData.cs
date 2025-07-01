@@ -144,3 +144,4 @@ public class BirthDayTests_xUnit_v3_TheoryTestData : IDisposable
     #endregion
     #endregion ArgsCode.Properties sample tests
 }
+

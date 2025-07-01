@@ -3,8 +3,8 @@
 
 namespace CsabaDu.DynamicTestData.SampleCodes.DynamicDataSources;
 
-public class BirthDayDynamicTestDataRowSource(ArgsCode argsCode, Type? expectedType)
-: DynamicObjectArraySource(argsCode, expectedType)
+public class BirthDayDynamicTestDataRowSource()
+: DynamicObjectArraySource(ArgsCode.Instance, typeof(IExpected))
 {
     #region Static Fields
     private static readonly DateOnly Today =
