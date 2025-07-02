@@ -15,7 +15,7 @@ public class BirthDayDynamicTestDataRowSource()
     // 'TestData<DateOnly>' type usage.
     // Valid 'string name' parameter should be declared and initialized
     // within the test method.
-    public IEnumerable<ITestDataRow>? GetBirthDayConstructorValidArgs(ArgsCode? argsCode = null)
+    public IEnumerable<ITestDataRow>? GetBirthDayConstructorValidArgs()
     {
         string expected = "creates BirthDay instance";
         string paramName = "dateOfBirth";
@@ -30,7 +30,7 @@ public class BirthDayDynamicTestDataRowSource()
         dateOfBirth = Today.AddDays(-1);
         add();
 
-        return GetTestDataRows(argsCode);
+        return GetTestDataRows();
 
         #region Local Methods
         void add()
@@ -44,7 +44,7 @@ public class BirthDayDynamicTestDataRowSource()
     // 'TestDataReturns<int, DateOnly, BirthDay>' type usage.
     // Valid 'string name' parameter should be declared and initialized
     // within the test method.
-    public IEnumerable<ITestDataRow>? GetCompareToArgs(ArgsCode? argsCode = null)
+    public IEnumerable<ITestDataRow>? GetCompareToArgs()
     {
         string name = "valid name";
         DateOnly dateOfBirth = Today.AddDays(-1);
@@ -72,7 +72,7 @@ public class BirthDayDynamicTestDataRowSource()
         other = new(name, dateOfBirth.AddDays(-1));
         add();
 
-        return GetTestDataRows(argsCode);
+        return GetTestDataRows();
 
         #region Local Methods
         void add()
@@ -87,8 +87,7 @@ public class BirthDayDynamicTestDataRowSource()
     // 'TestDataThrows<ArgumentException, string>' type usage.
     // Invalid 'DateOnly dateOfBirth' parameter should be declared and initialized
     // within the test method.
-    public IEnumerable<ITestDataRow>? GetBirthDayConstructorInvalidArgs(
-        ArgsCode? argsCode = null)
+    public IEnumerable<ITestDataRow>? GetBirthDayConstructorInvalidArgs()
     {
         string paramName = "name";
 
@@ -120,7 +119,7 @@ public class BirthDayDynamicTestDataRowSource()
         expected = new ArgumentOutOfRangeException(paramName, message);
         add();
 
-        return GetTestDataRows(argsCode);
+        return GetTestDataRows();
 
         #region Local Methods
         void add()

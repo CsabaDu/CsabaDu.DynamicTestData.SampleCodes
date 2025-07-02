@@ -3,7 +3,7 @@
 
 namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.v3.UnitTests;
 
-public class BirthDayTests_xUnit_v3 : IDisposable
+public class BirthDayTests_xUnit_v3_ObjectArraysRows : IDisposable
 {
     #region Test preparation
     private static BirthDayDynamicObjectArraySource DataSource
@@ -16,6 +16,7 @@ public class BirthDayTests_xUnit_v3 : IDisposable
     }
     #endregion
 
+    #region ArgsCode.Instance sample tests
     #region Constructors tests
     public static IEnumerable<object?[]>? BirthDayConstructorValidArgs
     => DataSource.GetBirthDayConstructorValidArgs();
@@ -79,6 +80,7 @@ public class BirthDayTests_xUnit_v3 : IDisposable
         Assert.Equal(testData.Expected, actual);
     }
     #endregion
+    #endregion ArgsCode.Instance sample tests
 
     #region ArgsCode.Properties sample tests
     #region Constructor tests

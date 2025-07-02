@@ -8,5 +8,5 @@ global using CsabaDu.DynamicTestData.TestDataTypes;
 global using CsabaDu.DynamicTestData.TestDataTypes.Interfaces;
 global using CsabaDu.DynamicTestData.xUnit.v3.Attributes;
 global using CsabaDu.DynamicTestData.xUnit.v3.DynamicDataSources;
-global using CsabaDu.DynamicTestData.xUnit.v3.TestDataHolders;
+global using CsabaDu.DynamicTestData.xUnit.v3.DataRowHolders;
 global using Xunit;
