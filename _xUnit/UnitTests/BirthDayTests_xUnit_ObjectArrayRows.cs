@@ -3,7 +3,7 @@
 
 namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.UnitTets;
 
-public class BirthDayTests_xUnit : IDisposable
+public class BirthDayTests_xUnit_ObjectArrayRows : IDisposable
 {
     #region Test preparation
     private static BirthDayDynamicExpectedObjectArraySource DataSource

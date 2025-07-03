@@ -3,6 +3,8 @@
 
 global using CsabaDu.DynamicTestData.SampleCodes.DynamicDataSources;
 global using CsabaDu.DynamicTestData.SampleCodes.Testables;
+global using CsabaDu.DynamicTestData.SampleCodes.xUnit.DynamicDataSources;
 global using CsabaDu.DynamicTestData.TestDataTypes;
-global using CsabaDu.DynamicTestData.TestDataTypes.Interfaces;
 global using CsabaDu.DynamicTestData.xUnit.Attributes;
+global using CsabaDu.DynamicTestData.xUnit.DataRowHolders;
+global using CsabaDu.DynamicTestData.xUnit.ynamicDataSources;
