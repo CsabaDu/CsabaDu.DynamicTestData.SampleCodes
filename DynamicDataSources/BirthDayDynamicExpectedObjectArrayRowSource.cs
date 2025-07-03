@@ -3,5 +3,5 @@
 
 namespace CsabaDu.DynamicTestData.SampleCodes.DynamicDataSources;
 
-public class BirthDayDynamicExpectedObjectArraySource(ArgsCode argsCode)
-: BirthDayDynamicObjectArraySource(argsCode, typeof(IExpected));
+public class BirthDayDynamicExpectedObjectArrayRowSource(ArgsCode argsCode)
+: BirthDayDynamicObjectArrayRowSource(argsCode, typeof(IExpected));

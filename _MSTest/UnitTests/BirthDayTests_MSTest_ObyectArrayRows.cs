@@ -7,7 +7,7 @@ namespace CsabaDu.DynamicTestData.SampleCodes.MSTest.UnitTests;
 public sealed class BirthDayTests_MSTest_ObyectArrayRows
 {
     #region Test preparation
-    private static BirthDayDynamicObjectArraySource DataSource
+    private static BirthDayDynamicObjectArrayRowSource DataSource
     => new(ArgsCode.Instance, null);
 
     [ClassCleanup(ClassCleanupBehavior.EndOfClass)]

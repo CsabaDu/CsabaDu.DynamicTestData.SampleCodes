@@ -3,8 +3,8 @@
 
 namespace CsabaDu.DynamicTestData.SampleCodes.DynamicDataSources;
 
-public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, Type? expectedResultType)
-: DynamicObjectArraySource(argsCode, expectedResultType)
+public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, bool? withExpected)
+: DynamicParams(argsCode, withExpected)
 {
     #region Static Fields
     private static readonly DateOnly Today =
@@ -15,7 +15,8 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, Type? expectedR
     // 'TestData<DateOnly>' type usage.
     // Valid 'string name' parameter should be declared and initialized
     // within the test method.
-    public IEnumerable<object?[]>? GetBirthDayConstructorValidArgs(ArgsCode? argsCode = null)
+    public IEnumerable<object?[]>? GetBirthDayConstructorValidArgs(
+        ArgsCode? argsCode = null)
     {
         string expected = "creates BirthDay instance";
         string paramName = "dateOfBirth";
@@ -23,28 +24,30 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, Type? expectedR
         // Valid name and dateOfBirth is equal with the current day => creates BirthDay instance
         string description = $"Valid name and {paramName} is equal with the current day";
         DateOnly dateOfBirth = Today;
-        add();
+        yield return testDataToParams();
 
         // Valid name and dateOfBirth is less than the current day => creates BirthDay instance
         description = $"Valid name and {paramName} is less than the current day";
         dateOfBirth = Today.AddDays(-1);
-        add();
-
-        return GetRows(argsCode);
+        yield return testDataToParams();
 
         #region Local Methods
-        void add()
-        => Add(
-            description,
-            expected,
-            dateOfBirth);
+        object?[] testDataToParams()
+        => WithOptionalArgsCode(
+            () => TestDataToParams(
+                description,
+                expected,
+                dateOfBirth),
+            nameof(TestDataToParams),
+            argsCode);
         #endregion
     }
 
     // 'TestDataReturns<int, DateOnly, BirthDay>' type usage.
     // Valid 'string name' parameter should be declared and initialized
     // within the test method.
-    public IEnumerable<object?[]>? GetCompareToArgs(ArgsCode? argsCode = null)
+    public IEnumerable<object?[]>? GetCompareToArgs(
+        ArgsCode? argsCode = null)
     {
         string name = "valid name";
         DateOnly dateOfBirth = Today.AddDays(-1);
@@ -53,34 +56,35 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, Type? expectedR
         string description = "other is null";
         int expected = -1;
         BirthDay? other = null;
-        add();
+        yield return testDataToParams();
 
         // this.DateOfBirth is greater than other.DateOfBirth => returns -1
         description = "this.DateOfBirth is greater than other.DateOfBirth";
         other = new(name, dateOfBirth.AddDays(1));
-        add();
+        yield return testDataToParams();
 
         // this.DateOfBirth is equal with other.DateOfBirth => return 0
         description = "this.DateOfBirth is equal with other.DateOfBirth";
         expected = 0;
         other = new(name, dateOfBirth);
-        add();
+        yield return testDataToParams();
 
         // this.DateOfBirth is less than other.DateOfBirth => returns 1
         description = "this.DateOfBirth is less than other.DateOfBirth";
         expected = 1;
         other = new(name, dateOfBirth.AddDays(-1));
-        add();
-
-        return GetRows(argsCode);
+        yield return testDataToParams();
 
         #region Local Methods
-        void add()
-        => AddReturns(
-            description,
-            expected,
-            dateOfBirth,
-            other);
+        object?[] testDataToParams()
+        => WithOptionalArgsCode(
+            () => TestDataReturnsToParams(
+                description,
+                expected,
+                dateOfBirth,
+                other),
+            nameof(TestDataReturnsToParams),
+            argsCode);
         #endregion
     }
 
@@ -96,7 +100,7 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, Type? expectedR
         string description = $"{paramName} is null";
         string name = null!;
         ArgumentException expected = new ArgumentNullException(paramName);
-        add();
+        yield return testDataToParams();
 
         // name is empty => throws ArgumentException
         description = $"{paramName} is empty";
@@ -104,12 +108,12 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, Type? expectedR
         string message = "The value cannot be an empty string " +
             "or composed entirely of whitespace.";
         expected = new ArgumentException(message, paramName);
-        add();
+        yield return testDataToParams();
 
         // name is white space => throws ArgumentException
         description = $"{paramName} is white space";
         name = " ";
-        add();
+        yield return testDataToParams();
 
         paramName = "dateOfBirth";
 
@@ -118,16 +122,18 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, Type? expectedR
         name = "valid name";
         message = BirthDay.GreaterThanTheCurrentDateMessage;
         expected = new ArgumentOutOfRangeException(paramName, message);
-        add();
-
-        return GetRows(argsCode);
+        yield return testDataToParams();
 
         #region Local Methods
-        void add()
-        => AddThrows(
-            description,
-            expected,
-            name);
+
+        object?[] testDataToParams()
+        => WithOptionalArgsCode(
+            () => TestDataThrowsToParams(
+                description,
+                expected,
+                name),
+            nameof(TestDataThrowsToParams),
+            argsCode);
         #endregion
     }
     #endregion
