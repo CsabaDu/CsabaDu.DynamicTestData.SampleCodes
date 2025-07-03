@@ -4,10 +4,10 @@
 namespace CsabaDu.DynamicTestData.SampleCodes.NUnit.UnitTests;
 
 [TestFixture]
-public class BirthdayTests_NUnit
+public class BirthdayTests_NUnit_TestCaseTestDatas
 {
     #region Test preparation
-    private static BirthDayDynamicExpectedObjectArraySource DataSource
+    private static BirthDayDynamicTestCaseDataRowSource DataSource
     => new(ArgsCode.Instance);
 
     [OneTimeTearDown]
@@ -19,8 +19,8 @@ public class BirthdayTests_NUnit
 
     #region ArgsCode.Instance sample tests
     #region Constructors tests
-    public static IEnumerable<object?[]>? BirthDayConstructorValidArgs
-    => DataSource.GetBirthDayConstructorValidArgs();
+    public static IEnumerable<TestCaseTestData>? BirthDayConstructorValidArgs
+    => DataSource.GetBirthDayConstructorValidArgs(nameof(Ctor_validArgs_createsInstance));
 
     [TestCaseSource(nameof(BirthDayConstructorValidArgs))]
     public void Ctor_validArgs_createsInstance(TestData<DateOnly> testData)
@@ -41,8 +41,8 @@ public class BirthdayTests_NUnit
         }
     }
 
-    public static IEnumerable<object?[]>? BirthDayConstructorInvalidArgs
-    => DataSource.GetBirthDayConstructorInvalidArgs();
+    public static IEnumerable<TestCaseTestData>? BirthDayConstructorInvalidArgs
+    => DataSource.GetBirthDayConstructorInvalidArgs(nameof(Ctor_invalidArgs_throwsArgumentException));
 
     [TestCaseSource(nameof(BirthDayConstructorInvalidArgs))]
     public void Ctor_invalidArgs_throwsArgumentException(
@@ -80,13 +80,14 @@ public class BirthdayTests_NUnit
         }
     }
     #endregion
+    #endregion
 
     #region CompareTo tests
-    public static IEnumerable<object?[]>? CompareToArgs
-    => DataSource.GetCompareToArgs();
+    public static IEnumerable<TestCaseTestData>? CompareToArgs
+    => DataSource.GetCompareToArgs(nameof(CompareTo_validArgs_returnsExpected));
 
     [TestCaseSource(nameof(CompareToArgs))]
-    public void CompareTo_validArgs_returnsExpected(
+    public int CompareTo_validArgs_returnsExpected(
         TestDataReturns<int, DateOnly, BirthDay> testData)
     {
         // Arrange
@@ -95,19 +96,15 @@ public class BirthdayTests_NUnit
         BirthDay? other = testData.Arg2;
         BirthDay sut = new(name, dateOfBirth);
 
-        // Act
-        var actual = sut.CompareTo(other);
-
-        // Assert
-        Assert.That(actual, Is.EqualTo(testData.Expected));
+        // Act & Assert
+        return sut.CompareTo(other);
     }
-    #endregion
     #endregion
 
     #region ArgsCode.Properties sample tests
     #region Constructor tests
-    private static IEnumerable<object?[]>? BirthDayConstructorValidArgs_Props
-    => DataSource.GetBirthDayConstructorValidArgs(ArgsCode.Properties);
+    private static IEnumerable<TestCaseTestData>? BirthDayConstructorValidArgs_Props
+    => DataSource.GetBirthDayConstructorValidArgs(nameof(Ctor_validArgs_createsInstance_Props), ArgsCode.Properties);
 
     [TestCaseSource(nameof(BirthDayConstructorValidArgs_Props))]
     public void Ctor_validArgs_createsInstance_Props(
@@ -128,8 +125,8 @@ public class BirthdayTests_NUnit
         }
     }
 
-    private static IEnumerable<object?[]>? BirthDayConstructorInvalidArgs_Props
-    => DataSource.GetBirthDayConstructorInvalidArgs(ArgsCode.Properties);
+    private static IEnumerable<TestCaseTestData>? BirthDayConstructorInvalidArgs_Props
+    => DataSource.GetBirthDayConstructorInvalidArgs(nameof(Ctor_invalidArgs_throwsArgumentException_Props), ArgsCode.Properties);
 
     [TestCaseSource(nameof(BirthDayConstructorInvalidArgs_Props))]
     public void Ctor_invalidArgs_throwsArgumentException_Props(
@@ -162,12 +159,11 @@ public class BirthdayTests_NUnit
     #endregion
 
     #region CompareTo tests
-    private static IEnumerable<object?[]>? CompareToArgs_Props
-        => DataSource.GetCompareToArgs(ArgsCode.Properties);
+    private static IEnumerable<TestCaseTestData>? CompareToArgs_Props
+        => DataSource.GetCompareToArgs( nameof(CompareTo_validArgs_returnsExpected_Props), ArgsCode.Properties);
 
     [TestCaseSource(nameof(CompareToArgs_Props))]
-    public void CompareTo_validArgs_returnsExpected_Props(
-        int expected,
+    public int CompareTo_validArgs_returnsExpected_Props(
         DateOnly dateOfBirth,
         BirthDay? other)
     {
@@ -175,11 +171,8 @@ public class BirthdayTests_NUnit
         string name = "valid name";
         BirthDay sut = new(name, dateOfBirth);
 
-        // Act
-        var actual = sut.CompareTo(other);
-
-        // Assert
-        Assert.That(actual, Is.EqualTo(expected));
+        // Act & Assert
+        return sut.CompareTo(other);
     }
     #endregion
     #endregion ArgsCode.Properties sample tests
