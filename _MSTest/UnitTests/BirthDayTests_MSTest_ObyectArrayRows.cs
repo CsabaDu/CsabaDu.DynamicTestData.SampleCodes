@@ -4,7 +4,7 @@
 namespace CsabaDu.DynamicTestData.SampleCodes.MSTest.UnitTests;
 
 [TestClass]
-public sealed class BirthDayTests_MSTest
+public sealed class BirthDayTests_MSTest_ObyectArrayRows
 {
     #region Test preparation
     private static BirthDayDynamicObjectArraySource DataSource
