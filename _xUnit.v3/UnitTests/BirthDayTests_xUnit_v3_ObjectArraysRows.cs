@@ -6,7 +6,7 @@ namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.v3.UnitTests;
 public class BirthDayTests_xUnit_v3_ObjectArraysRows : IDisposable
 {
     #region Test preparation
-    private static BirthDayDynamicObjectArraySource DataSource
+    private static BirthDayDynamicObjectArrayRowSource DataSource
     => new(ArgsCode.Instance, typeof(IExpected));
 
     public void Dispose()

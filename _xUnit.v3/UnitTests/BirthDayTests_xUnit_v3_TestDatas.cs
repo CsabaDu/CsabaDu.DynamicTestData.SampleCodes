@@ -3,17 +3,11 @@
 
 namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.v3.UnitTests;
 
-public class BirthDayTests_xUnit_v3_TestDatas : IDisposable
+public class BirthDayTests_xUnit_v3_TestDatas
 {
     #region Test preparation
     private static BirthDayDynamicTestDataSource DataSource
     => new();
-
-    public void Dispose()
-    {
-        DataSource.ResetDataRowHolder();
-        GC.SuppressFinalize(this);
-    }
     #endregion
 
     #region Constructors tests
