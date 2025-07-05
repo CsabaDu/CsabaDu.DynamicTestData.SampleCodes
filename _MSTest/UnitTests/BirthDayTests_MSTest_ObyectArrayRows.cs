@@ -1,6 +1,8 @@
 ﻿// SPDX-License-Identifier: MIT
 // Copyright (c) 2025. Csaba Dudas (CsabaDu)
 
+using CsabaDu.DynamicTestData.Statics;
+
 namespace CsabaDu.DynamicTestData.SampleCodes.MSTest.UnitTests;
 
 [TestClass]
@@ -17,7 +19,7 @@ public sealed class BirthDayTests_MSTest_ObyectArrayRows
     }
 
     public static string? GetDisplayName(MethodInfo testMethod, object?[] args)
-    => DynamicDataSourceBase.GetDisplayName(testMethod.Name, args);
+    => DynamicDataSource.GetDisplayName(testMethod.Name, args);
     #endregion
 
     #region ArgsCode.Instance sample tests
