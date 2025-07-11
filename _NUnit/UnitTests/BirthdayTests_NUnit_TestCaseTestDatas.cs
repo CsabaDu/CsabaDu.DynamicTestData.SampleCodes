@@ -80,7 +80,6 @@ public class BirthdayTests_NUnit_TestCaseTestDatas
         }
     }
     #endregion
-    #endregion
 
     #region CompareTo tests
     public static IEnumerable<TestCaseTestData>? CompareToArgs
@@ -99,6 +98,7 @@ public class BirthdayTests_NUnit_TestCaseTestDatas
         // Act & Assert
         return sut.CompareTo(other);
     }
+    #endregion
     #endregion
 
     #region ArgsCode.Properties sample tests
