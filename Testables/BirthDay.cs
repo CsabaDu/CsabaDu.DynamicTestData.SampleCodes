@@ -5,7 +5,7 @@ namespace CsabaDu.DynamicTestData.SampleCodes.Testables;
 
 public class BirthDay : IComparable<BirthDay>
 {
-    #region Constants and Fields
+    #region Static Fields
     private static readonly DateOnly Today =
         DateOnly.FromDateTime(DateTime.Now);
     public const string GreaterThanTheCurrentDateMessage =
