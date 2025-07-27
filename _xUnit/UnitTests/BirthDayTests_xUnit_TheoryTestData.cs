@@ -11,7 +11,7 @@ public class BirthDayTests_xUnit_TheoryTestData : IDisposable
 
     public void Dispose()
     {
-        DataSource.ResetDataRowHolder();
+        DataSource.ResetDataHolder();
         GC.SuppressFinalize(this);
     }
     #endregion

@@ -1,8 +1,6 @@
 ﻿// SPDX-License-Identifier: MIT
 // Copyright (c) 2025. Csaba Dudas (CsabaDu)
 
-using CsabaDu.DynamicTestData.Statics;
-
 namespace CsabaDu.DynamicTestData.SampleCodes.MSTest.UnitTests;
 
 [TestClass]
@@ -10,16 +8,16 @@ public sealed class BirthDayTests_MSTest_ObyectArrayRows
 {
     #region Test preparation
     private static BirthDayDynamicObjectArrayRowSource DataSource
-    => new(ArgsCode.Instance, null);
+    => new(ArgsCode.Instance, PropertyCode.TestCaseName);
 
     [ClassCleanup(ClassCleanupBehavior.EndOfClass)]
     public static void Cleanup()
     {
-        DataSource.ResetDataRowHolder();
+        DataSource.ResetDataHolder();
     }
 
     public static string? GetDisplayName(MethodInfo testMethod, object?[] args)
-    => DynamicDataSource.GetDisplayName(testMethod.Name, args);
+    => TestDataFactory.GetDisplayName(testMethod.Name, args);
     #endregion
 
     #region ArgsCode.Instance sample tests

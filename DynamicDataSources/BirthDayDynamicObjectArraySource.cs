@@ -3,8 +3,8 @@
 
 namespace CsabaDu.DynamicTestData.SampleCodes.DynamicDataSources;
 
-public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, bool? withExpected)
-: DynamicParams(argsCode, withExpected)
+public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, PropertyCode propertyCode)
+: DynamicObjectArraySource(argsCode, propertyCode)
 {
     #region Static Fields
     private static readonly DateOnly Today =
@@ -16,7 +16,8 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, bool? withExpec
     // Valid 'string name' parameter should be declared and initialized
     // within the test method.
     public IEnumerable<object?[]>? GetBirthDayConstructorValidArgs(
-        ArgsCode? argsCode = null)
+        ArgsCode? argsCode = null,
+        PropertyCode? propertyCode = null)
     {
         string expected = "creates BirthDay instance";
         string paramName = "dateOfBirth";
@@ -33,13 +34,14 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, bool? withExpec
 
         #region Local Methods
         object?[] testDataToParams()
-        => WithOptionalArgsCode(
+        => WithOptionalDataStrategy(
             () => TestDataToParams(
                 description,
                 expected,
                 dateOfBirth),
             nameof(TestDataToParams),
-            argsCode);
+            argsCode,
+            propertyCode)!;
         #endregion
     }
 
@@ -47,7 +49,8 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, bool? withExpec
     // Valid 'string name' parameter should be declared and initialized
     // within the test method.
     public IEnumerable<object?[]>? GetCompareToArgs(
-        ArgsCode? argsCode = null)
+        ArgsCode? argsCode = null,
+        PropertyCode? propertyCode = null)
     {
         string name = "valid name";
         DateOnly dateOfBirth = Today.AddDays(-1);
@@ -77,14 +80,15 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, bool? withExpec
 
         #region Local Methods
         object?[] testDataToParams()
-        => WithOptionalArgsCode(
+        => WithOptionalDataStrategy(
             () => TestDataReturnsToParams(
                 description,
                 expected,
                 dateOfBirth,
                 other),
             nameof(TestDataReturnsToParams),
-            argsCode);
+            argsCode,
+            propertyCode)!;
         #endregion
     }
 
@@ -92,7 +96,8 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, bool? withExpec
     // Invalid 'DateOnly dateOfBirth' parameter should be declared and initialized
     // within the test method.
     public IEnumerable<object?[]>? GetBirthDayConstructorInvalidArgs(
-        ArgsCode? argsCode = null)
+        ArgsCode? argsCode = null,
+        PropertyCode? propertyCode = null)
     {
         string paramName = "name";
 
@@ -127,13 +132,14 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, bool? withExpec
         #region Local Methods
 
         object?[] testDataToParams()
-        => WithOptionalArgsCode(
+        => WithOptionalDataStrategy(
             () => TestDataThrowsToParams(
                 description,
                 expected,
                 name),
             nameof(TestDataThrowsToParams),
-            argsCode);
+            argsCode,
+            propertyCode)!;
         #endregion
     }
     #endregion

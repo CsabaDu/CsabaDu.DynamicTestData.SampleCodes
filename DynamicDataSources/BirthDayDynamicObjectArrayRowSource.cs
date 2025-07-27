@@ -4,8 +4,8 @@
 
 namespace CsabaDu.DynamicTestData.SampleCodes.DynamicDataSources;
 
-public class BirthDayDynamicObjectArrayRowSource(ArgsCode argsCode, Type? expectedResultType)
-: DynamicObjectArraySource(argsCode, expectedResultType)
+public class BirthDayDynamicObjectArrayRowSource(ArgsCode argsCode, PropertyCode propertyCode)
+: DynamicObjectArrayRowSource(argsCode, propertyCode)
 {
     #region Static Fields
     private static readonly DateOnly Today =
@@ -16,7 +16,9 @@ public class BirthDayDynamicObjectArrayRowSource(ArgsCode argsCode, Type? expect
     // 'TestData<DateOnly>' type usage.
     // Valid 'string name' parameter should be declared and initialized
     // within the test method.
-    public IEnumerable<object?[]>? GetBirthDayConstructorValidArgs(ArgsCode? argsCode = null)
+    public IEnumerable<object?[]>? GetBirthDayConstructorValidArgs(
+        ArgsCode? argsCode = null,
+        PropertyCode? propertyCode = null)
     {
         string expected = "creates BirthDay instance";
         string paramName = "dateOfBirth";
@@ -31,7 +33,7 @@ public class BirthDayDynamicObjectArrayRowSource(ArgsCode argsCode, Type? expect
         dateOfBirth = Today.AddDays(-1);
         add();
 
-        return GetRows(argsCode);
+        return GetRows(argsCode, propertyCode);
 
         #region Local Methods
         void add()
@@ -45,7 +47,9 @@ public class BirthDayDynamicObjectArrayRowSource(ArgsCode argsCode, Type? expect
     // 'TestDataReturns<int, DateOnly, BirthDay>' type usage.
     // Valid 'string name' parameter should be declared and initialized
     // within the test method.
-    public IEnumerable<object?[]>? GetCompareToArgs(ArgsCode? argsCode = null)
+    public IEnumerable<object?[]>? GetCompareToArgs(
+        ArgsCode? argsCode = null,
+        PropertyCode? propertyCode = null)
     {
         string name = "valid name";
         DateOnly dateOfBirth = Today.AddDays(-1);
@@ -73,7 +77,7 @@ public class BirthDayDynamicObjectArrayRowSource(ArgsCode argsCode, Type? expect
         other = new(name, dateOfBirth.AddDays(-1));
         add();
 
-        return GetRows(argsCode);
+        return GetRows(argsCode, propertyCode);
 
         #region Local Methods
         void add()
@@ -89,7 +93,8 @@ public class BirthDayDynamicObjectArrayRowSource(ArgsCode argsCode, Type? expect
     // Invalid 'DateOnly dateOfBirth' parameter should be declared and initialized
     // within the test method.
     public IEnumerable<object?[]>? GetBirthDayConstructorInvalidArgs(
-        ArgsCode? argsCode = null)
+        ArgsCode? argsCode = null,
+        PropertyCode? propertyCode = null)
     {
         string paramName = "name";
 
@@ -121,7 +126,7 @@ public class BirthDayDynamicObjectArrayRowSource(ArgsCode argsCode, Type? expect
         expected = new ArgumentOutOfRangeException(paramName, message);
         add();
 
-        return GetRows(argsCode);
+        return GetRows(argsCode, propertyCode);
 
         #region Local Methods
         void add()

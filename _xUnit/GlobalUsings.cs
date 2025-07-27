@@ -9,4 +9,4 @@ global using CsabaDu.DynamicTestData.TestDataRows.Interfaces;
 global using CsabaDu.DynamicTestData.TestDataTypes;
 global using CsabaDu.DynamicTestData.xUnit.Attributes;
 global using CsabaDu.DynamicTestData.xUnit.DataRowHolders;
-global using CsabaDu.DynamicTestData.xUnit.ynamicDataSources;
+global using CsabaDu.DynamicTestData.xUnit.DynamicDataSources;

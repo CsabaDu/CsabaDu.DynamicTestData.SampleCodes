@@ -2,7 +2,7 @@
 // Copyright (c) 2025. Csaba Dudas (CsabaDu)
 
 
-namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.UnitTets;
+namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.UnitTests;
 
 public class BirthDayTests_xUnit_ObjectArrayRows : IDisposable
 {
@@ -12,7 +12,7 @@ public class BirthDayTests_xUnit_ObjectArrayRows : IDisposable
 
     public void Dispose()
     {
-        DataSource.ResetDataRowHolder();
+        DataSource.ResetDataHolder();
         GC.SuppressFinalize(this);
     }
     #endregion
