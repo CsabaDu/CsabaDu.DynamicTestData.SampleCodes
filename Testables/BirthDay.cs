@@ -19,13 +19,18 @@ public class BirthDay : IComparable<BirthDay>
     #endregion
 
     #region Constructor
+    // -----------
     // TEST CASES:
-    // -THROWS-
+    // -----------
+    // - THROWS -
+    // -----------
     // name is null => throws ArguemntNullException
     // name is empty => throws ArgumentException
     // name is white space => throws ArgumentException
     // dateOfBirth is less than the current day => throws ArgumentOutOfRangeException
-    // -CREATES-
+    // -----------
+    // - CREATES -
+    // -----------
     // Valid name and dateOfBirth is equal with the current day => creates BirthDay instance
     // Valid name and dateOfBirth is greater than the current day => creates BirthDay instance
     public BirthDay(string name, DateOnly dateOfBirth)
@@ -47,8 +52,11 @@ public class BirthDay : IComparable<BirthDay>
     #endregion
 
     #region Methods
+    // -----------
     // TEST CASES:
-    // -RETURNS-
+    // -----------
+    // - RETURNS -
+    // -----------
     // other is null => returns -1
     // this.DateOfBirth is less than other.DateOfBirth => returns -1
     // this.DateOfBirth is equal with other.DateOfBirth => returns 0
