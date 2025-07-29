@@ -3,7 +3,7 @@
 
 namespace CsabaDu.DynamicTestData.SampleCodes.DynamicDataSources;
 
-public class BirthDayDynamicTestCaseDataRowSource(ArgsCode argsCode)
+public class BirthDayDynamicTestCaseTestDataRowSource(ArgsCode argsCode)
 : DynamicTestCaseDataSource(argsCode)
 {
     #region Static Fields

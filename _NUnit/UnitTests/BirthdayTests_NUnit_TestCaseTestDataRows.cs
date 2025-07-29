@@ -4,16 +4,16 @@
 namespace CsabaDu.DynamicTestData.SampleCodes.NUnit.UnitTests;
 
 [TestFixture]
-public class BirthdayTests_NUnit_TestCaseTestDatas
+public class BirthdayTests_NUnit_TestCaseTestDataRows
 {
     #region Test preparation
-    private static BirthDayDynamicTestCaseDataRowSource DataSource
+    private static BirthDayDynamicTestCaseTestDataRowSource DataSource
     => new(ArgsCode.Instance);
 
     [OneTimeTearDown]
     public void OneTimeTearDown()
     {
-        DataSource.ResetDataRowHolder();
+        DataSource.ResetDataHolder();
     }
     #endregion
 

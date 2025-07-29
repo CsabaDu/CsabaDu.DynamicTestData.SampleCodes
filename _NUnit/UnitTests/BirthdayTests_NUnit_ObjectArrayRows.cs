@@ -13,7 +13,7 @@ public class BirthdayTests_NUnit_ObjectArrayRows
     [OneTimeTearDown]
     public void OneTimeTearDown()
     {
-        DataSource.ResetDataRowHolder();
+        DataSource.ResetDataHolder();
     }
     #endregion
 
