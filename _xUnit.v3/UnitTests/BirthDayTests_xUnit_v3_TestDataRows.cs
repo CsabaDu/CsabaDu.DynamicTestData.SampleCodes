@@ -13,7 +13,7 @@ public class BirthDayTests_xUnit_v3_TestDataRows : IDisposable
 
     public void Dispose()
     {
-        DataSource.ResetDataRowHolder();
+        DataSource.ResetDataHolder();
         GC.SuppressFinalize(this);
     }
     #endregion

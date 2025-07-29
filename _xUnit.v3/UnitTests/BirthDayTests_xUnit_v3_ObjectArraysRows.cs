@@ -7,11 +7,11 @@ public class BirthDayTests_xUnit_v3_ObjectArraysRows : IDisposable
 {
     #region Test preparation
     private static BirthDayDynamicObjectArrayRowSource DataSource
-    => new(ArgsCode.Instance, typeof(IExpected));
+    => new(ArgsCode.Instance, PropertyCode.Expected);
 
     public void Dispose()
     {
-        DataSource.ResetDataRowHolder();
+        DataSource.ResetDataHolder();
         GC.SuppressFinalize(this);
     }
     #endregion
