@@ -4,7 +4,7 @@
 namespace CsabaDu.DynamicTestData.SampleCodes.DynamicDataSources;
 
 public class BirthDayDynamicTestDataRowSource()
-: DynamicObjectArrayRowSource(ArgsCode.Instance, PropertyCode.Expected)
+: DynamicObjectArrayRowSource(ArgsCode.Instance, PropsCode.Expected)
 {
     #region Static Fields
     private static readonly DateOnly Today =

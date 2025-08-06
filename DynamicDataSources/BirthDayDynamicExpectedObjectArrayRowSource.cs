@@ -17,7 +17,7 @@ public class BirthDayDynamicExpectedObjectArrayRowSource(ArgsCode argsCode)
     // within the test method.
     public IEnumerable<object?[]>? GetBirthDayConstructorValidArgs(
         ArgsCode? argsCode = null,
-        PropertyCode? propertyCode = null)
+        PropsCode? propsCode = null)
     {
         string expected = "creates BirthDay instance";
         string paramName = "dateOfBirth";
@@ -32,7 +32,7 @@ public class BirthDayDynamicExpectedObjectArrayRowSource(ArgsCode argsCode)
         dateOfBirth = Today.AddDays(-1);
         add();
 
-        return GetRows(argsCode, propertyCode);
+        return GetRows(argsCode, propsCode);
 
         #region Local Methods
         void add()
@@ -48,7 +48,7 @@ public class BirthDayDynamicExpectedObjectArrayRowSource(ArgsCode argsCode)
     // within the test method.
     public IEnumerable<object?[]>? GetCompareToArgs(
         ArgsCode? argsCode = null,
-        PropertyCode? propertyCode = null)
+        PropsCode? propsCode = null)
     {
         string name = "valid name";
         DateOnly dateOfBirth = Today.AddDays(-1);
@@ -76,7 +76,7 @@ public class BirthDayDynamicExpectedObjectArrayRowSource(ArgsCode argsCode)
         other = new(name, dateOfBirth.AddDays(-1));
         add();
 
-        return GetRows(argsCode, propertyCode);
+        return GetRows(argsCode, propsCode);
 
         #region Local Methods
         void add()
@@ -93,7 +93,7 @@ public class BirthDayDynamicExpectedObjectArrayRowSource(ArgsCode argsCode)
     // within the test method.
     public IEnumerable<object?[]>? GetBirthDayConstructorInvalidArgs(
         ArgsCode? argsCode = null,
-        PropertyCode? propertyCode = null)
+        PropsCode? propsCode = null)
     {
         string paramName = "name";
 
@@ -125,7 +125,7 @@ public class BirthDayDynamicExpectedObjectArrayRowSource(ArgsCode argsCode)
         expected = new ArgumentOutOfRangeException(paramName, message);
         add();
 
-        return GetRows(argsCode, propertyCode);
+        return GetRows(argsCode, propsCode);
 
         #region Local Methods
         void add()

@@ -4,8 +4,8 @@
 
 namespace CsabaDu.DynamicTestData.SampleCodes.DynamicDataSources;
 
-public class BirthDayDynamicObjectArrayRowSource(ArgsCode argsCode, PropertyCode propertyCode)
-: DynamicObjectArrayRowSource(argsCode, propertyCode)
+public class BirthDayDynamicObjectArrayRowSource(ArgsCode argsCode, PropsCode propsCode)
+: DynamicObjectArrayRowSource(argsCode, propsCode)
 {
     #region Static Fields
     private static readonly DateOnly Today =
@@ -18,7 +18,7 @@ public class BirthDayDynamicObjectArrayRowSource(ArgsCode argsCode, PropertyCode
     // within the test method.
     public IEnumerable<object?[]>? GetBirthDayConstructorValidArgs(
         ArgsCode? argsCode = null,
-        PropertyCode? propertyCode = null)
+        PropsCode? propsCode = null)
     {
         string expected = "creates BirthDay instance";
         string paramName = "dateOfBirth";
@@ -33,7 +33,7 @@ public class BirthDayDynamicObjectArrayRowSource(ArgsCode argsCode, PropertyCode
         dateOfBirth = Today.AddDays(-1);
         add();
 
-        return GetRows(argsCode, propertyCode);
+        return GetRows(argsCode, propsCode);
 
         #region Local Methods
         void add()
@@ -49,7 +49,7 @@ public class BirthDayDynamicObjectArrayRowSource(ArgsCode argsCode, PropertyCode
     // within the test method.
     public IEnumerable<object?[]>? GetCompareToArgs(
         ArgsCode? argsCode = null,
-        PropertyCode? propertyCode = null)
+        PropsCode? propsCode = null)
     {
         string name = "valid name";
         DateOnly dateOfBirth = Today.AddDays(-1);
@@ -77,7 +77,7 @@ public class BirthDayDynamicObjectArrayRowSource(ArgsCode argsCode, PropertyCode
         other = new(name, dateOfBirth.AddDays(-1));
         add();
 
-        return GetRows(argsCode, propertyCode);
+        return GetRows(argsCode, propsCode);
 
         #region Local Methods
         void add()
@@ -94,7 +94,7 @@ public class BirthDayDynamicObjectArrayRowSource(ArgsCode argsCode, PropertyCode
     // within the test method.
     public IEnumerable<object?[]>? GetBirthDayConstructorInvalidArgs(
         ArgsCode? argsCode = null,
-        PropertyCode? propertyCode = null)
+        PropsCode? propsCode = null)
     {
         string paramName = "name";
 
@@ -126,7 +126,7 @@ public class BirthDayDynamicObjectArrayRowSource(ArgsCode argsCode, PropertyCode
         expected = new ArgumentOutOfRangeException(paramName, message);
         add();
 
-        return GetRows(argsCode, propertyCode);
+        return GetRows(argsCode, propsCode);
 
         #region Local Methods
         void add()

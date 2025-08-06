@@ -3,8 +3,8 @@
 
 namespace CsabaDu.DynamicTestData.SampleCodes.DynamicDataSources;
 
-public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, PropertyCode propertyCode)
-: DynamicObjectArraySource(argsCode, propertyCode)
+public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, PropsCode propsCode)
+: DynamicObjectArraySource(argsCode, propsCode)
 {
     #region Static Fields
     private static readonly DateOnly Today =
@@ -17,7 +17,7 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, PropertyCode pr
     // within the test method.
     public IEnumerable<object?[]>? GetBirthDayConstructorValidArgs(
         ArgsCode? argsCode = null,
-        PropertyCode? propertyCode = null)
+        PropsCode? propsCode = null)
     {
         string expected = "creates BirthDay instance";
         string paramName = "dateOfBirth";
@@ -41,7 +41,7 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, PropertyCode pr
                 dateOfBirth),
             nameof(TestDataToParams),
             argsCode,
-            propertyCode)!;
+            propsCode)!;
         #endregion
     }
 
@@ -50,7 +50,7 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, PropertyCode pr
     // within the test method.
     public IEnumerable<object?[]>? GetCompareToArgs(
         ArgsCode? argsCode = null,
-        PropertyCode? propertyCode = null)
+        PropsCode? propsCode = null)
     {
         string name = "valid name";
         DateOnly dateOfBirth = Today.AddDays(-1);
@@ -88,7 +88,7 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, PropertyCode pr
                 other),
             nameof(TestDataReturnsToParams),
             argsCode,
-            propertyCode)!;
+            propsCode)!;
         #endregion
     }
 
@@ -97,7 +97,7 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, PropertyCode pr
     // within the test method.
     public IEnumerable<object?[]>? GetBirthDayConstructorInvalidArgs(
         ArgsCode? argsCode = null,
-        PropertyCode? propertyCode = null)
+        PropsCode? propsCode = null)
     {
         string paramName = "name";
 
@@ -139,7 +139,7 @@ public class BirthDayDynamicObjectArraySource(ArgsCode argsCode, PropertyCode pr
                 name),
             nameof(TestDataThrowsToParams),
             argsCode,
-            propertyCode)!;
+            propsCode)!;
         #endregion
     }
     #endregion
