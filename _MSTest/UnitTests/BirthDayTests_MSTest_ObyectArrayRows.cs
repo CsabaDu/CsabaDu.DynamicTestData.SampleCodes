@@ -8,7 +8,7 @@ public sealed class BirthDayTests_MSTest_ObyectArrayRows
 {
     #region Test preparation
     private static BirthDayDynamicObjectArrayRowSource DataSource
-    => new(ArgsCode.Instance, PropertyCode.TestCaseName);
+    => new(ArgsCode.Instance, PropsCode.TestCaseName);
 
     [ClassCleanup(ClassCleanupBehavior.EndOfClass)]
     public static void Cleanup()

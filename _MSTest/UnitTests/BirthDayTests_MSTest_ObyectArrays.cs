@@ -8,7 +8,7 @@ public sealed class BirthDayTests_MSTest_ObyectArrays
 {
     #region Test preparation
     private static BirthDayDynamicObjectArraySource DataSource
-    => new(ArgsCode.Instance, PropertyCode.TestCaseName);
+    => new(ArgsCode.Instance, PropsCode.TestCaseName);
 
     public static string? GetDisplayName(MethodInfo testMethod, object?[] args)
     => TestDataFactory.GetDisplayName(testMethod.Name, args);
