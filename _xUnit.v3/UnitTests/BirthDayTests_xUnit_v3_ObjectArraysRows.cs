@@ -7,7 +7,7 @@ public class BirthDayTests_xUnit_v3_ObjectArraysRows : IDisposable
 {
     #region Test preparation
     private static BirthDayDynamicObjectArrayRowSource DataSource
-    => new(ArgsCode.Instance, PropertyCode.Expected);
+    => new(ArgsCode.Instance, PropsCode.Expected);
 
     public void Dispose()
     {
