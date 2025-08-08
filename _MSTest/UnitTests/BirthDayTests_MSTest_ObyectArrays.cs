@@ -20,8 +20,8 @@ public sealed class BirthDayTests_MSTest_ObyectArrays
     => DataSource.GetBirthDayConstructorValidArgs();
 
     [TestMethod,
-        DynamicData(nameof(BirthDayConstructorValidArgs),
-        DynamicDataDisplayName = nameof(GetDisplayName))]
+        DynamicData(nameof(BirthDayConstructorValidArgs)/*,
+        DynamicDataDisplayName = nameof(GetDisplayName)*/)]
     public void Ctor_validArgs_createsInstance(
         TestData<DateOnly> testData)
     {
