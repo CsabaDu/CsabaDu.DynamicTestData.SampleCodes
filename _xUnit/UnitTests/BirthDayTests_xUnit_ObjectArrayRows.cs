@@ -50,12 +50,12 @@ public class BirthDayTests_xUnit_ObjectArrayRows : IDisposable
             DateOnly.FromDateTime(DateTime.Now).AddDays(1);
         var expected = testData.Expected;
         void attempt() => _ = new BirthDay(name!, dateOfBirth);
+        var actual = Record.Exception(attempt) as ArgumentException;
 
         // Act & Assert
-        var actual = Record.Exception(attempt);
         Assert.IsType(expected.GetType(), actual);
         Assert.Equal(expected.Message, actual?.Message);
-        Assert.Equal(expected.ParamName, (actual as ArgumentException)?.ParamName);
+        Assert.Equal(expected.ParamName, actual?.ParamName);
     }
     #endregion
 
