@@ -6,5 +6,4 @@ global using CsabaDu.DynamicTestData.SampleCodes.Testables;
 global using CsabaDu.DynamicTestData.Statics;
 global using CsabaDu.DynamicTestData.TestDataRows.Interfaces;
 global using CsabaDu.DynamicTestData.TestDataTypes;
-global using CsabaDu.DynamicTestData.TestDataTypes.Interfaces;
 global using static CsabaDu.DynamicTestData.TestDataTypes.TestDataFactory;
