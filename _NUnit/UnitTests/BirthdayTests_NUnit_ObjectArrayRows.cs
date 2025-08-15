@@ -107,7 +107,9 @@ public class BirthdayTests_NUnit_ObjectArrayRows
     #region ArgsCode.Properties sample tests
     #region Constructor tests
     private static IEnumerable<object?[]>? BirthDayConstructorValidArgs_Props
-    => DataSource.GetBirthDayConstructorValidArgs(ArgsCode.Properties);
+    => DataSource.GetBirthDayConstructorValidArgs(
+        ArgsCode.Properties,
+        PropsCode.Expected);
 
     [TestCaseSource(nameof(BirthDayConstructorValidArgs_Props))]
     public void Ctor_validArgs_createsInstance_Props(
@@ -129,7 +131,9 @@ public class BirthdayTests_NUnit_ObjectArrayRows
     }
 
     private static IEnumerable<object?[]>? BirthDayConstructorInvalidArgs_Props
-    => DataSource.GetBirthDayConstructorInvalidArgs(ArgsCode.Properties);
+    => DataSource.GetBirthDayConstructorInvalidArgs(
+        ArgsCode.Properties,
+        PropsCode.Expected);
 
     [TestCaseSource(nameof(BirthDayConstructorInvalidArgs_Props))]
     public void Ctor_invalidArgs_throwsArgumentException_Props(
@@ -163,7 +167,9 @@ public class BirthdayTests_NUnit_ObjectArrayRows
 
     #region CompareTo tests
     private static IEnumerable<object?[]>? CompareToArgs_Props
-        => DataSource.GetCompareToArgs(ArgsCode.Properties);
+        => DataSource.GetCompareToArgs(
+        ArgsCode.Properties,
+        PropsCode.Expected);
 
     [TestCaseSource(nameof(CompareToArgs_Props))]
     public void CompareTo_validArgs_returnsExpected_Props(
