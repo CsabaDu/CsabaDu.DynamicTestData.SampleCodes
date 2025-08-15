@@ -177,5 +177,4 @@ public class BirthdayTests_NUnit_ObjectArrays
     }
     #endregion
     #endregion ArgsCode.Properties sample tests
-
 }
