@@ -7,8 +7,8 @@ namespace CsabaDu.DynamicTestData.SampleCodes.NUnit.UnitTests;
 public class BirthdayTests_NUnit_ObjectArrayRows
 {
     #region Test preparation
-    private static BirthDayDynamicExpectedObjectArrayRowSource DataSource
-    => new(ArgsCode.Instance);
+    private static BirthDayDynamicObjectArrayRowSource DataSource
+    => new(ArgsCode.Instance, default);
 
     [OneTimeTearDown]
     public void OneTimeTearDown()

@@ -1,26 +1,22 @@
 ﻿// SPDX-License-Identifier: MIT
 // Copyright (c) 2025. Csaba Dudas (CsabaDu)
 
-namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.UnitTests;
+namespace CsabaDu.DynamicTestData.SampleCodes.NUnit.UnitTests;
 
-public class BirthDayTests_xUnit_ObjectArrayRows : IDisposable
+[TestFixture]
+public class BirthdayTests_NUnit_ObjectArrays
 {
     #region Test preparation
-    private static BirthDayDynamicExpectedObjectArrayRowSource DataSource
-    => new(ArgsCode.Instance);
-
-    public void Dispose()
-    {
-        DataSource.ResetDataHolder();
-        GC.SuppressFinalize(this);
-    }
+    private static BirthDayDynamicObjectArraySource DataSource
+    => new(ArgsCode.Instance, PropsCode.Expected);
     #endregion
 
+    #region ArgsCode.Instance sample tests
     #region Constructors tests
     public static IEnumerable<object?[]>? BirthDayConstructorValidArgs
     => DataSource.GetBirthDayConstructorValidArgs();
 
-    [Theory, MemberTestData(nameof(BirthDayConstructorValidArgs))]
+    [TestCaseSource(nameof(BirthDayConstructorValidArgs))]
     public void Ctor_validArgs_createsInstance(TestData<DateOnly> testData)
     {
         // Arrange
@@ -31,15 +27,18 @@ public class BirthDayTests_xUnit_ObjectArrayRows : IDisposable
         var actual = new BirthDay(name, dateOfBirth);
 
         // Assert
-        Assert.NotNull(actual);
-        Assert.Equal(name, actual.Name);
-        Assert.Equal(dateOfBirth, actual.DateOfBirth);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual.Name, Is.EqualTo(name));
+            Assert.That(actual.DateOfBirth, Is.EqualTo(dateOfBirth));
+        }
     }
 
     public static IEnumerable<object?[]>? BirthDayConstructorInvalidArgs
-    => DataSource.GetBirthDayConstructorInvalidArgs()!;
+    => DataSource.GetBirthDayConstructorInvalidArgs();
 
-    [Theory, MemberTestData(nameof(BirthDayConstructorInvalidArgs))]
+    [TestCaseSource(nameof(BirthDayConstructorInvalidArgs))]
     public void Ctor_invalidArgs_throwsArgumentException(
         TestDataThrows<ArgumentException, string> testData)
     {
@@ -49,12 +48,30 @@ public class BirthDayTests_xUnit_ObjectArrayRows : IDisposable
             DateOnly.FromDateTime(DateTime.Now).AddDays(1);
         var expected = testData.Expected;
         void attempt() => _ = new BirthDay(name!, dateOfBirth);
-        var actual = Record.Exception(attempt) as ArgumentException;
 
         // Act & Assert
-        Assert.IsType(expected.GetType(), actual);
-        Assert.Equal(expected.Message, actual?.Message);
-        Assert.Equal(expected.ParamName, actual?.ParamName);
+        try
+        {
+            attempt();
+            Assert.Fail(
+                $"Expected {expected.GetType().Name} " +
+                "was not thrown.");
+        }
+        catch (ArgumentException actual)
+        {
+            using (Assert.EnterMultipleScope())
+            {
+                Assert.That(actual, Is.TypeOf(expected.GetType()));
+                Assert.That(actual?.Message, Is.EqualTo(expected.Message));
+                Assert.That(actual?.ParamName, Is.EqualTo(expected.ParamName));
+            }
+        }
+        catch (Exception ex)
+        {
+            Assert.Fail(
+                "Unexpected exception type: " +
+                $"{ex.GetType().Name}");
+        }
     }
     #endregion
 
@@ -62,7 +79,7 @@ public class BirthDayTests_xUnit_ObjectArrayRows : IDisposable
     public static IEnumerable<object?[]>? CompareToArgs
     => DataSource.GetCompareToArgs();
 
-    [Theory, MemberTestData(nameof(CompareToArgs))]
+    [TestCaseSource(nameof(CompareToArgs))]
     public void CompareTo_validArgs_returnsExpected(
         TestDataReturns<int, DateOnly, BirthDay> testData)
     {
@@ -76,16 +93,17 @@ public class BirthDayTests_xUnit_ObjectArrayRows : IDisposable
         var actual = sut.CompareTo(other);
 
         // Assert
-        Assert.Equal(testData.Expected, actual);
+        Assert.That(actual, Is.EqualTo(testData.Expected));
     }
+    #endregion
     #endregion
 
     #region ArgsCode.Properties sample tests
     #region Constructor tests
-    public static IEnumerable<object?[]>? BirthDayConstructorValidArgs_Props
+    private static IEnumerable<object?[]>? BirthDayConstructorValidArgs_Props
     => DataSource.GetBirthDayConstructorValidArgs(ArgsCode.Properties);
 
-    [Theory, MemberTestData(nameof(BirthDayConstructorValidArgs_Props))]
+    [TestCaseSource(nameof(BirthDayConstructorValidArgs_Props))]
     public void Ctor_validArgs_createsInstance_Props(
         DateOnly dateOfBirth)
     {
@@ -96,15 +114,18 @@ public class BirthDayTests_xUnit_ObjectArrayRows : IDisposable
         var actual = new BirthDay(name, dateOfBirth);
 
         // Assert
-        Assert.NotNull(actual);
-        Assert.Equal(name, actual.Name);
-        Assert.Equal(dateOfBirth, actual.DateOfBirth);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual.Name, Is.EqualTo(name));
+            Assert.That(actual.DateOfBirth, Is.EqualTo(dateOfBirth));
+        }
     }
 
-    public static IEnumerable<object?[]>? BirthDayConstructorInvalidArgs_Props
+    private static IEnumerable<object?[]>? BirthDayConstructorInvalidArgs_Props
     => DataSource.GetBirthDayConstructorInvalidArgs(ArgsCode.Properties);
 
-    [Theory, MemberTestData(nameof(BirthDayConstructorInvalidArgs_Props))]
+    [TestCaseSource(nameof(BirthDayConstructorInvalidArgs_Props))]
     public void Ctor_invalidArgs_throwsArgumentException_Props(
         ArgumentException expected,
         string? name)
@@ -114,18 +135,31 @@ public class BirthDayTests_xUnit_ObjectArrayRows : IDisposable
         void attempt() => _ = new BirthDay(name!, dateOfBirth);
 
         // Act & Assert
-        var actual = Record.Exception(attempt);
-        Assert.IsType(expected.GetType(), actual);
-        Assert.Equal(expected.Message, actual?.Message);
-        Assert.Equal(expected.ParamName, (actual as ArgumentException)?.ParamName);
+        try
+        {
+            attempt();
+            Assert.Fail(
+                $"Expected {expected.GetType().Name} was not thrown.");
+        }
+        catch (ArgumentException actual)
+        {
+            Assert.That(actual, Is.TypeOf(expected.GetType()));
+            Assert.That(actual?.Message, Is.EqualTo(expected.Message));
+            Assert.That(actual?.ParamName, Is.EqualTo(expected.ParamName));
+        }
+        catch (Exception ex)
+        {
+            Assert.Fail(
+                $"Unexpected exception type: {ex.GetType().Name}");
+        }
     }
     #endregion
 
     #region CompareTo tests
-    public static IEnumerable<object?[]>? CompareToArgs_Props
+    private static IEnumerable<object?[]>? CompareToArgs_Props
         => DataSource.GetCompareToArgs(ArgsCode.Properties);
 
-    [Theory, MemberTestData(nameof(CompareToArgs_Props))]
+    [TestCaseSource(nameof(CompareToArgs_Props))]
     public void CompareTo_validArgs_returnsExpected_Props(
         int expected,
         DateOnly dateOfBirth,
@@ -139,8 +173,9 @@ public class BirthDayTests_xUnit_ObjectArrayRows : IDisposable
         var actual = sut.CompareTo(other);
 
         // Assert
-        Assert.Equal(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected));
     }
     #endregion
     #endregion ArgsCode.Properties sample tests
+
 }
