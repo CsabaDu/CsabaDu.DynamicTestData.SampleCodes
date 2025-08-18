@@ -13,6 +13,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="CsabaDu.DynamicTestData" Version="2.0.2-beta" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,18 +25,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="MSTest.Analyzers" Version="4.0.0-preview.25372.6">
+    <PackageReference Update="MSTest.Analyzers" Version="3.10.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="MSTest.TestAdapter" Version="4.0.0-preview.25372.6" />
+    <PackageReference Update="MSTest.TestAdapter" Version="3.10.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="MSTest.TestFramework" Version="4.0.0-preview.25372.6" />
+    <PackageReference Update="MSTest.TestFramework" Version="3.10.2" />
   </ItemGroup>
 
 </Project>

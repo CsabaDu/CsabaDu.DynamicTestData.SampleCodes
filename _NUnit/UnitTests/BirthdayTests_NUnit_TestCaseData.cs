@@ -80,7 +80,7 @@ public class BirthdayTests_NUnit_TestCaseData
     => DataSource.GetCompareToArgs(nameof(CompareTo_validArgs_returnsExpected));
 
     [TestCaseSource(nameof(CompareToArgs))]
-    public void CompareTo_validArgs_returnsExpected(
+    public int CompareTo_validArgs_returnsExpected(
         TestDataReturns<int, DateOnly, BirthDay> testData)
     {
         // Arrange
@@ -89,11 +89,9 @@ public class BirthdayTests_NUnit_TestCaseData
         BirthDay? other = testData.Arg2;
         BirthDay sut = new(name, dateOfBirth);
 
-        // Act
-        var actual = sut.CompareTo(other);
+        // Act Assert
+        return sut.CompareTo(other);
 
-        // Assert
-        Assert.That(actual, Is.EqualTo(testData.Expected));
     }
     #endregion
     #endregion
@@ -160,8 +158,7 @@ public class BirthdayTests_NUnit_TestCaseData
         => DataSource.GetCompareToArgs(nameof(CompareTo_validArgs_returnsExpected_Props), ArgsCode.Properties);
 
     [TestCaseSource(nameof(CompareToArgs_Props))]
-    public void CompareTo_validArgs_returnsExpected_Props(
-        int expected,
+    public int CompareTo_validArgs_returnsExpected_Props(
         DateOnly dateOfBirth,
         BirthDay? other)
     {
@@ -169,11 +166,9 @@ public class BirthdayTests_NUnit_TestCaseData
         string name = "valid name";
         BirthDay sut = new(name, dateOfBirth);
 
-        // Act
-        var actual = sut.CompareTo(other);
+        // Act & Assert
+        return sut.CompareTo(other);
 
-        // Assert
-        Assert.That(actual, Is.EqualTo(expected));
     }
     #endregion
     #endregion ArgsCode.Properties sample tests
