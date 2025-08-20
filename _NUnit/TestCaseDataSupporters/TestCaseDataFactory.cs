@@ -2,6 +2,7 @@
 // Copyright (c) 2025. Csaba Dudas (CsabaDu)
 
 using CsabaDu.DynamicTestData.TestDataTypes.Interfaces;
+using NUnit.Framework.Internal;
 using static CsabaDu.DynamicTestData.TestDataTypes.TestDataFactory;
 
 namespace CsabaDu.DynamicTestData.SampleCodes.NUnit.TestCaseDataSupporters
@@ -25,10 +26,12 @@ namespace CsabaDu.DynamicTestData.SampleCodes.NUnit.TestCaseDataSupporters
                 out string testCaseName);
 
             var testCaseData = new TestCaseData(parameters)
-                .SetDescription(testCaseName)
-                .SetName(GetDisplayName(
+            {
+                TestName = GetDisplayName(
                     testMethodName,
-                    testCaseName));
+                    testCaseName)
+            }
+            .SetDescription(testCaseName);
 
             Type testDataType = testData.GetType();
 
@@ -50,6 +53,32 @@ namespace CsabaDu.DynamicTestData.SampleCodes.NUnit.TestCaseDataSupporters
                 testCaseData.Returns(
                     testDataReturns!.GetExpected())
                 : testCaseData;
+        }
+
+        public static TestCaseData<TTestData> TestDataToTestCaseData<TTestData>(
+            TTestData testData,
+            string? testMethodName = null)
+        where TTestData : notnull, ITestData
+        {
+            var testCaseName = testData.GetTestCaseName();
+            var testCaseData = new TestCaseData<TTestData>(testData)
+            {
+                TypeArgs = [typeof(TTestData)],
+                TestName = GetDisplayName(
+                    testMethodName,
+                    testCaseName)
+            };
+
+            testCaseData.Properties.Set(
+                PropertyNames.Description,
+                testCaseName);
+
+            if (testData is ITestDataReturns testDataReturns)
+            {
+                testCaseData.ExpectedResult = testDataReturns.GetExpected();
+            }
+
+            return testCaseData;
         }
     }
 }

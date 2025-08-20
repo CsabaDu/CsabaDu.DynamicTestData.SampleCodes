@@ -3,9 +3,6 @@
 
 namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.DynamicDataSources;
 
-using CsabaDu.DynamicTestData.TestDataTypes.Interfaces;
-using static CsabaDu.DynamicTestData.TestDataTypes.TestDataFactory;
-
 public class BirthDayTheoryDataHolder
 : DynamicTheoryDataHolder
 {
