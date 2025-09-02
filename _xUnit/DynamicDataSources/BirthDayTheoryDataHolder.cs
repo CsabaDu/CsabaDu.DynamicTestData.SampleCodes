@@ -31,10 +31,10 @@ public class BirthDayTheoryDataHolder
 
         #region Local Methods
         void add()
-        => Add(
+        => Add(CreateTestData(
             description,
             expected,
-            dateOfBirth);
+            dateOfBirth));
         #endregion
     }
 
@@ -77,10 +77,10 @@ public class BirthDayTheoryDataHolder
 
         #region Local Methods
         void add()
-        => AddThrows(
+        => Add(CreateTestDataThrows(
             description,
             expected,
-            name);
+            name));
         #endregion
     }
 
@@ -119,11 +119,11 @@ public class BirthDayTheoryDataHolder
 
         #region Local Methods
         void add()
-        => AddReturns(
+        => Add(CreateTestDataReturns(
             description,
             expected,
             dateOfBirth,
-            other);
+            other));
         #endregion
     }
 }

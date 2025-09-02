@@ -10,3 +10,4 @@ global using CsabaDu.DynamicTestData.TestDataTypes;
 global using CsabaDu.DynamicTestData.xUnit.Attributes;
 global using CsabaDu.DynamicTestData.xUnit.DataRowHolders;
 global using CsabaDu.DynamicTestData.xUnit.DynamicDataSources;
+global using static CsabaDu.DynamicTestData.TestDataTypes.TestDataFactory;
