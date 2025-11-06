@@ -1,10 +1,10 @@
 ﻿// SPDX-License-Identifier: MIT
 // Copyright (c) 2025. Csaba Dudas (CsabaDu)
 
-namespace CsabaDu.DynamicTestData.SampleCodes.DynamicDataSources;
+namespace CsabaDu.DynamicTestData.SampleCodes.DynamicDataRowSources;
 
-public class BirthDayDynamicExpectedObjectArrayRowSource(ArgsCode argsCode)
-: DynamicExpectedObjectArrayRowSource(argsCode)
+public class BirthDayDynamicObjectArrayRowSource(ArgsCode argsCode, PropsCode propsCode)
+: DynamicObjectArrayRowSource(argsCode, propsCode)
 {
     #region Static Fields
     private static readonly DateOnly Today =

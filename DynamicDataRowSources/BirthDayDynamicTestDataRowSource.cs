@@ -1,7 +1,7 @@
 ﻿// SPDX-License-Identifier: MIT
 // Copyright (c) 2025. Csaba Dudas (CsabaDu)
 
-namespace CsabaDu.DynamicTestData.SampleCodes.DynamicDataSources;
+namespace CsabaDu.DynamicTestData.SampleCodes.DynamicDataRowSources;
 
 public class BirthDayDynamicTestDataRowSource()
 : DynamicObjectArrayRowSource(ArgsCode.Instance, PropsCode.Expected)

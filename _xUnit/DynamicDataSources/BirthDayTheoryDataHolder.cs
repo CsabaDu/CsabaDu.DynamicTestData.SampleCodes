@@ -1,10 +1,11 @@
 ﻿// SPDX-License-Identifier: MIT
 // Copyright (c) 2025. Csaba Dudas (CsabaDu)
 
+
 namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.DynamicDataSources;
 
-public class BirthDayTheoryDataHolder
-: DynamicTheoryDataHolder
+public class BirthDayTheoryDataHolder(ArgsCode argsCode)
+: DynamicTheoryDataHolder(argsCode)
 {
     private static readonly DateOnly Today =
         DateOnly.FromDateTime(DateTime.Now);

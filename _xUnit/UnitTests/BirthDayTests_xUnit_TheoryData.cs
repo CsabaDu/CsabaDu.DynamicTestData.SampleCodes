@@ -7,7 +7,7 @@ public class BirthDayTests_xUnit_TheorytData : IDisposable
 {
     #region Test preparation
     private static BirthDayTheoryDataHolder DataSource
-    => new();
+    => new(ArgsCode.Instance);
 
     public void Dispose()
     {

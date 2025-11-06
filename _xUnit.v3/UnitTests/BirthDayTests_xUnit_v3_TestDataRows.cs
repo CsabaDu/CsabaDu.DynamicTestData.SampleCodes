@@ -1,6 +1,7 @@
 ﻿// SPDX-License-Identifier: MIT
 // Copyright (c) 2025. Csaba Dudas (CsabaDu)
 
+using CsabaDu.DynamicTestData.SampleCodes.DynamicDataRowSources;
 using CsabaDu.DynamicTestData.TestDataRows.Interfaces;
 
 namespace CsabaDu.DynamicTestData.SampleCodes.xUnit.v3.UnitTests;
