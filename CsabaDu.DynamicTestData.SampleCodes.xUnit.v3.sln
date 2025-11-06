@@ -7,12 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsabaDu.DynamicTestData.Sam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsabaDu.DynamicTestData.SampleCodes", "CsabaDu.DynamicTestData.SampleCodes.csproj", "{0494A440-54BB-A6B0-8CA4-3BC0557B5F32}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SampleCodes", "SampleCodes", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_xUnit.v3", "_xUnit.v3", "{411ABB7B-BBB4-494F-ADF2-48B75662C2D4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsabaDu.DynamicTestData.xUnit.v3", "..\CsabaDu.DynamicTestData.xUnit.v3\CsabaDu.DynamicTestData.xUnit.v3.csproj", "{1E460631-7118-E2A7-A6E9-40264FD01858}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,18 +21,9 @@ Global
 		{0494A440-54BB-A6B0-8CA4-3BC0557B5F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0494A440-54BB-A6B0-8CA4-3BC0557B5F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0494A440-54BB-A6B0-8CA4-3BC0557B5F32}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1E460631-7118-E2A7-A6E9-40264FD01858}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E460631-7118-E2A7-A6E9-40264FD01858}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E460631-7118-E2A7-A6E9-40264FD01858}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E460631-7118-E2A7-A6E9-40264FD01858}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{8525BA4B-E8C1-4D5A-BE26-18CEB2D6124E} = {411ABB7B-BBB4-494F-ADF2-48B75662C2D4}
-		{0494A440-54BB-A6B0-8CA4-3BC0557B5F32} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
-		{411ABB7B-BBB4-494F-ADF2-48B75662C2D4} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B34BA6DA-EEDB-4CDD-A561-CC569E97E3B9}
